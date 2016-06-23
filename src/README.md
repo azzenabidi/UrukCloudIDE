@@ -19,6 +19,7 @@ DevBox is a free as in freedom cloud IDE
 
 # Known Issues
 - unable to send multiple ajax requests
+
 # Features to implement soon
 - deleting files and projects
 
