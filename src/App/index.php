@@ -184,7 +184,7 @@ ace.require("ace/ext/language_tools");
 
     	$(document).ready( function() {
 
-				$('#fileexplorer').fileTree({ root: '/var/www/html/Devbox/src/App/Users/<?php echo $_SESSION['login']."/";?>', script: 'triggers/jqueryFileTree.php', folderEvent: 'click', expandSpeed: 750, collapseSpeed: 750, multiFolder: true,loadMessage:'Loading...' }, function(file) {
+				$('#fileexplorer').fileTree({ root: '<?php echo __DIR__."/Users/".$_SESSION['login']."/";?>', script: 'triggers/jqueryFileTree.php', folderEvent: 'click', expandSpeed: 750, collapseSpeed: 750, multiFolder: true,loadMessage:'Loading...' }, function(file) {
 					var test =file.slice(25,file.length);
 
 					$.ajax({
@@ -249,7 +249,7 @@ $("#ss").click(function(e){
 		var test= $("#prname").val();
 		var encoded = encodeURIComponent(test);
 		$("#rr").load("triggers/addproject.php?projectname="+encoded);
-		$("#fileexplorer").fileTree({ root: '/var/www/html/Devbox/src/App/Users/<?php echo $_SESSION['login']."/";?>', script: 'triggers/jqueryFileTree.php' }, function(file) {
+		$("#fileexplorer").fileTree({ root: '<?php echo __DIR__."/Users/".$_SESSION['login']."/";?>', script: 'triggers/jqueryFileTree.php' }, function(file) {
         alert(file);
 
     });
@@ -270,7 +270,7 @@ context.init({preventDoubleContext: false});
 	context.attach('#fileexplorer', [
 
 
-	{text: 'Reload', action: function(e, selector) { $("#fileexplorer").fileTree({ root: '/var/www/html/Devbox/src/App/Users/<?php echo $_SESSION['login']."/";?>', script: 'triggers/jqueryFileTree.php' }, function(file) {
+	{text: 'Reload', action: function(e, selector) { $("#fileexplorer").fileTree({ root: '<?php  echo __DIR__."/Users/".$_SESSION['login']."/";?>', script: 'triggers/jqueryFileTree.php' }, function(file) {
         alert(file);
 
     }); } },

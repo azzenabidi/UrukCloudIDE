@@ -80,14 +80,14 @@ return 1;}
 //this method update project info
 public function updateproject()
 {
-$data=$this->db->renameprojectdao($this->newproject_name,"/var/www/html/editor/App/Users/".$this->user_login."/".$this->project_name,"/var/www/html/editor/App/Users/".$this->user_login."/".$this->newproject_name,$this->project_id);
+$data=$this->db->renameprojectdao($this->newproject_name,__DIR__."/../App/Users/".$this->user_login."/".$this->project_name,__DIR__."/../App/Users/".$this->user_login."/".$this->newproject_name,$this->project_id);
 	return $data;
 	}
 
 
 public function deleteproject()
 {
-$data=$this->db->deleteprojectdao($this->project_id,$this->project_name,$this->user_id,"/var/www/html/editor/App/Users/".$this->user_login."/");
+$data=$this->db->deleteprojectdao($this->project_id,$this->project_name,$this->user_id,__DIR__."/../App/Users/".$this->user_login."/");
 	return $data;
 	}
 	public function getprojectid()
