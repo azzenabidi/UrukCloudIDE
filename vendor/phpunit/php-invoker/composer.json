@@ -1,0 +1,39 @@
+{
+    "name": "phpunit/php-invoker",
+    "description": "Utility class for invoking callables with a timeout.",
+    "type": "library",
+    "keywords": [
+        "process"
+    ],
+    "homepage": "https://github.com/sebastianbergmann/php-invoker/",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Sebastian Bergmann",
+            "email": "sebastian@phpunit.de",
+            "role": "lead"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/sebastianbergmann/php-invoker/issues"
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "phpunit/php-timer": ">=1.0.6",
+        "ext-pcntl": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
+        ]
+    }
+}
+

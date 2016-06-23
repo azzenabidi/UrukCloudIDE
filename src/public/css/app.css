@@ -1,0 +1,30 @@
+ body {
+        overflow: hidden;
+    }
+
+    #editor {
+        
+        position: absolute;
+      
+      
+        
+        left: 350px;
+        width:1000px;
+        height:550px;
+    }
+    #fileexplorer{
+    
+				float: left;
+				margin: 15px;			
+				width: 300px;
+				height: 550px;
+				border-top: solid 1px #BBB;
+				border-left: solid 1px #BBB;
+				border-bottom: solid 1px #FFF;
+				border-right: solid 1px #FFF;
+				background: #FFF;
+				overflow: scroll;
+				padding: 5px;
+			
+}
+
