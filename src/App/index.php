@@ -184,7 +184,7 @@ ace.require("ace/ext/language_tools");
 
     	$(document).ready( function() {
 
-				$('#fileexplorer').fileTree({ root: '<?php __DIR__."/Users/".$_SESSION['login']."/";?>', script: 'triggers/jqueryFileTree.php', folderEvent: 'click', expandSpeed: 750, collapseSpeed: 750, multiFolder: true,loadMessage:'Loading...' }, function(file) {
+				$('#fileexplorer').fileTree({ root: '<?php echo __DIR__."/Users/".$_SESSION['login']."/";?>', script: 'triggers/jqueryFileTree.php', folderEvent: 'click', expandSpeed: 750, collapseSpeed: 750, multiFolder: true,loadMessage:'Loading...' }, function(file) {
 					var test =file.slice(25,file.length);
 
 					$.ajax({

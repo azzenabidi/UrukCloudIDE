@@ -38,7 +38,8 @@ public function __construct()
 		$data->bindParam(':project',$project_id);
 		$data->execute();
 		$abspath=dirname(__FILE__) . '/';
-		$path=substr($abspath, 0, 21)."App/Users/".$user_login."/".$projectname."/".$filename;
+		$testpath= str_replace("/DAO","/App/Users",$abspath);
+		$path= $testpath.$user_login."/".$projectname."/".$filename;
 		$myfile=fopen($path,'w');
 		chown($path, "azzenovic");
 		chmod($path, 0777);
