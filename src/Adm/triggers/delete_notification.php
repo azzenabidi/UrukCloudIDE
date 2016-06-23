@@ -1,6 +1,7 @@
 <?php
 $id=$_GET['id'];
-require_once($_SERVER["DOCUMENT_ROOT"]."/editor/Controller/Notification_Controller.class.php");
+require __DIR__.'/../../../vendor/autoload.php';
+use Devbox\Controller\Notification_Controller;
 $note= new Notification_Controller();
 $note->deletenotification_action($id);
 ?>
