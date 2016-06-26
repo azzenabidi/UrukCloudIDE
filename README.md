@@ -23,7 +23,7 @@ DevBox is a free as in freedom cloud IDE
 # Features to implement soon
 - deleting files and projects
 
-#Trouble:
+# Trouble:
 
 All efforts have been made to ensure the smooth and correct running of this application.
 If you find that Devbox is behaving abnormaly though, there are 3 options :
