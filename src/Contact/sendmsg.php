@@ -1,7 +1,8 @@
 <?php
 $id=$_GET['id'];
 $note=$_GET['note'];
-require_once($_SERVER["DOCUMENT_ROOT"]."/editor/Controller/Message_Controller.class.php");
+require_once(__DIR__.'/../../vendor/autoload.php');
+use Devbox\Controller\Message_Controller;
 $msg= new Message_Controller();
 $msg->sendmsg_action($note,$id);
 ?>
