@@ -25,7 +25,7 @@
     <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <style>
 #addnote{
-float:right;	
+float:right;
 	}
 </style>
 <style>
@@ -57,16 +57,17 @@ margin-left:220px;
 </head>
 
 <body>
-<?php 
-require_once($_SERVER["DOCUMENT_ROOT"]."/editor/Controller/User_Controller.class.php");
+<?php
+require_once(__DIR__.'/../../vendor/autoload.php');
+use Devbox\Controller\User_Controller;
 $user= new User_Controller();
 $result=$user->searchbylogin_action($_SESSION['login']);
 while($data=$result->fetch())
 {
 ?>
-    
 
-       
+
+
         <!-- Page Content -->
         <div id="wrapper">
             <div class="container-fluid">
@@ -99,22 +100,22 @@ margin-left:220px;
 </style>
          <form method="post" action="#" id="msgform">
 			<div class="form-group">
-			                       
+
                                             <input type="hidden" class="form-control" placeholder="" name="userid" id="userid" value="<?php echo $data['user_id'];} ?>">
-                                        </div>			  
+                                        </div>
              <div class="form-group">
                                             <label>Write Down Your Message</label>
                                             <textarea class="form-control" rows="3" id="note" name="note"></textarea>
                                         </div>
                                         <center> <button type="submit" class="btn btn-default">Send </button></center>
-                                        
+
         </form>
         <div id="div1"></div>
-        
+
         </div>
         <!-- /#page-wrapper -->
 
-  
+
     <!-- /#wrapper -->
 
     <!-- jQuery -->
@@ -134,7 +135,7 @@ margin-left:220px;
 
 			$('#msgform').validate({
                     rules:{
-                        
+
 
                         "note":{
                             required:true,
@@ -143,33 +144,33 @@ margin-left:220px;
                         },
 
                     messages:{
-                        
+
 
                         "note":{
                             required:"Please Write Down Your Message "
-                          
+
                         }
                         }
 
-        
-                
+
+
             })
-						
+
         });
         </script>
-         
+
 <script>
 $(document).on('submit', 'form', function(e) {
 
 var note=$("textarea").val();
 var id=$("#userid").val();
 encodednote = encodeURIComponent(note);
-encodedid = encodeURIComponent(id);			
+encodedid = encodeURIComponent(id);
    $("#div1").load("sendmsg.php?note="+encodednote+"&id="+encodedid);
 	$("#div1").fadeOut(2400);
     e.preventDefault();
-  
-    
+
+
 });
     </script>
 </body>
