@@ -61,7 +61,7 @@ return $data;
 		$data->execute();
 		$path=__DIR__."/../App/Users/".$login;
 		mkdir($path);
-		echo shell_exec("useradd -m ".$login." 2>&1");
+		
 
 		}
 		public function update_userstatus($login,$status)
