@@ -56,7 +56,10 @@ public function admin_disconnect_action($login)
 	$result=$this->admin->disconnect();
 	if ($result==1) {
 
+		
 	header("location: ../../Login/index.php");
 
-}}}
+}
+
+}}
 ?>

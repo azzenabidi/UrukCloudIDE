@@ -28,7 +28,7 @@ return $data;
 }
 public function disconnect()
 {
-	ession_destroy();
+	session_destroy();
 	session_unset();
 	return 1;
 	}
