@@ -17,6 +17,10 @@ public function loginconstructor($login,$password)
 	$this->admin_password=md5($password);
 
 }
+public function setadminlogin($admin_login)
+{
+$this->admin_login=$admin_login;
+	}
 public function connect()
  {
 $data=$this->db->authentificatedao($this->admin_login,$this->admin_password);
@@ -24,8 +28,9 @@ return $data;
 }
 public function disconnect()
 {
-session_destroy();
-return 1;
+	ession_destroy();
+	session_unset();
+	return 1;
 	}
 	}
 ?>
