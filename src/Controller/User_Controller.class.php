@@ -37,12 +37,15 @@ return "All fields are required";
 }
 
 }
-public function user_disconnect_action()
-{
+public function user_disconnect_action($login)
+ {
+   $this->user->setlogin($login);
+   $result=$this->user->disconnect();
+   if ($result==1) {
 
-echo "hello";
-
+   header("location: ../../Login/index.php");
 }
+ }
 public function search_action ($id)
 {
 $this->user->setuserid($id);
@@ -122,5 +125,6 @@ public function searchbylogin_action ($login)
 $this->user->setlogin($login);
 return $this->user->getusersbylogin();
 }
+
 }
 ?>

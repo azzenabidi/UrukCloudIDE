@@ -49,10 +49,14 @@ echo "All fields are required";
 }
 
 }
-public function admin_disconnect_action()
+public function admin_disconnect_action($login)
 {
 
-echo "hello";
+	$this->admin->setadminlogin($login);
+	$result=$this->admin->disconnect();
+	if ($result==1) {
 
-}}
+	header("location: ../../Login/index.php");
+
+}}}
 ?>

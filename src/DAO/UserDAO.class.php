@@ -61,7 +61,7 @@ return $data;
 		$data->execute();
 		$path=__DIR__."/../App/Users/".$login;
 		mkdir($path);
-		
+
 
 		}
 		public function update_userstatus($login,$status)
@@ -94,5 +94,6 @@ return $data;
 		system('rm -rf ' . escapeshellarg($path), $retval);
     return $retval == 0;
 			}
+
 	}
 ?>
