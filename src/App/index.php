@@ -1,9 +1,8 @@
 <?php
 session_start();
-if(!isset($_SESSION['login']))
-{
-header("location: ../Login/index.php");
-	}
+if (!isset($_SESSION['login'])) {
+    header("location: ../Login/index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -126,15 +125,13 @@ display:none;
 
                               require_once(__DIR__.'/../../vendor/autoload.php');
 use Devbox\Controller\Notification_Controller;
-                              $note= new Notification_Controller();
+
+$note= new Notification_Controller();
 
                               $result= $note->getlatestnotification_action();
-                              while($data=$result->fetch())
-                              {
-
-
-               echo "<li>on   ".$data['notification_time']."<br><br>  the admin wrote '   ".$data['notification_text']."'</li>";
-		   }
+                              while ($data=$result->fetch()) {
+                                  echo "<li>on   ".$data['notification_time']."<br><br>  the admin wrote '   ".$data['notification_text']."'</li>";
+                              }
                ?>
 
 

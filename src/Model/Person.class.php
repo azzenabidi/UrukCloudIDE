@@ -1,7 +1,8 @@
 <?php
 namespace Devbox\Model;
-abstract class Person {
-abstract  function connect();
-abstract function disconnect();
-	}
-?>
+
+abstract class Person
+{
+    abstract public function connect();
+    abstract public function disconnect();
+}

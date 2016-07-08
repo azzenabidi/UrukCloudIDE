@@ -84,28 +84,28 @@ margin-left:220px;
                         require_once(__DIR__.'/../../vendor/autoload.php');
                         use Devbox\Controller\User_Controller;
                         use Devbox\Controller\Message_Controller;
-                              $msg= new Message_Controller();
+
+                        $msg= new Message_Controller();
                               $user= new User_Controller();
                               $result= $msg->viewmsgbox();
-                              while($data=$result->fetch())
-                              { echo "<li>";
-
-                              ?>
-                               <a href='message.php?id=<?php echo $data['message_id'];?>'>
+                              while ($data=$result->fetch()) {
+                                  echo "<li>"; ?>
+                               <a href='message.php?id=<?php echo $data['message_id']; ?>'>
                                 <div>
                                   <?php $users=$user->search_action($data['user_id']);
-                                  while($data2=$users->fetch())
-                                  {
-                                    echo " <strong>".$data2['user_name']."</strong>";
-                                    echo '<span class="pull-right text-muted">';
-                                        echo"<em>".$data['message_time']."</em>";
-                                    echo "</span>";
-                                echo "</div>";
-                                echo "<div>".substr($data['message_content'],0,30)."...</div>";
-                            echo "</a>";}
+                                  while ($data2=$users->fetch()) {
+                                      echo " <strong>".$data2['user_name']."</strong>";
+                                      echo '<span class="pull-right text-muted">';
+                                      echo"<em>".$data['message_time']."</em>";
+                                      echo "</span>";
+                                      echo "</div>";
+                                      echo "<div>".substr($data['message_content'], 0, 30)."...</div>";
+                                      echo "</a>";
+                                  }
 
-                        echo "</li>";
-                        echo '<li class="divider"></li>';}
+                                  echo "</li>";
+                                  echo '<li class="divider"></li>';
+                              }
                         ?>
                         <li>
                             <a class="text-center" href="#">
@@ -189,29 +189,30 @@ margin-left:220px;
 <?php
 
 use Devbox\Controller\Notification_Controller;
-if (isset($_GET['id']))
-			{
-$notification= new Notification_Controller();
+
+if (isset($_GET['id'])) {
+    $notification= new Notification_Controller();
 $result=$notification->search_action($_GET['id']);
-while($data=$result->fetch())
-{
-			?>
+while ($data=$result->fetch()) {
+    ?>
              <form method="post" action="#" id="upform">
 			<div class="form-group">
 
-                                            <input type="hidden" class="form-control" placeholder="" name="noted" id="noteid" value="<?php echo $data['notification_id']  ;?>">
+                                            <input type="hidden" class="form-control" placeholder="" name="noted" id="noteid" value="<?php echo $data['notification_id']  ; ?>">
                                         </div>
              <div class="form-group">
                                             <label>Notification Text</label>
-                                            <textarea class="form-control" rows="3" id="note" name="note"><?php echo $data['notification_text'];?></textarea>
+                                            <textarea class="form-control" rows="3" id="note" name="note"><?php echo $data['notification_text']; ?></textarea>
                                         </div>
                                          <button type="submit" class="btn btn-default">Modify Notification</button>
                                         <button type="reset" class="btn btn-default">Cancel</button>
         </form>
         <div id="div1"></div>
-         <?php }}
-                                        else
-                                        echo "<b>Ooops! The Page you are requesting doesn't exist anymore!</b>";
+         <?php 
+}
+} else {
+                                            echo "<b>Ooops! The Page you are requesting doesn't exist anymore!</b>";
+                                        }
                                          ?>
         </div>
         <!-- /#page-wrapper -->
