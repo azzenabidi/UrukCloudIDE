@@ -70,28 +70,28 @@ margin-left:220px;
                         require_once(__DIR__.'/../../vendor/autoload.php');
                         use Devbox\Controller\User_Controller;
                         use Devbox\Controller\Message_Controller;
-                              $msg= new Message_Controller();
+
+                        $msg= new Message_Controller();
                               $user= new User_Controller();
                               $result= $msg->viewmsgbox();
-                              while($data=$result->fetch())
-                              { echo "<li>";
-
-                              ?>
-                               <a href='message.php?id=<?php echo $data['message_id'];?>'>
+                              while ($data=$result->fetch()) {
+                                  echo "<li>"; ?>
+                               <a href='message.php?id=<?php echo $data['message_id']; ?>'>
                                 <div>
                                   <?php $users=$user->search_action($data['user_id']);
-                                  while($data2=$users->fetch())
-                                  {
-                                    echo " <strong>".$data2['user_name']."</strong>";
-                                    echo '<span class="pull-right text-muted">';
-                                        echo"<em>".$data['message_time']."</em>";
-                                    echo "</span>";
-                                echo "</div>";
-                                echo "<div>".substr($data['message_content'],0,30)."...</div>";
-                            echo "</a>";}
+                                  while ($data2=$users->fetch()) {
+                                      echo " <strong>".$data2['user_name']."</strong>";
+                                      echo '<span class="pull-right text-muted">';
+                                      echo"<em>".$data['message_time']."</em>";
+                                      echo "</span>";
+                                      echo "</div>";
+                                      echo "<div>".substr($data['message_content'], 0, 30)."...</div>";
+                                      echo "</a>";
+                                  }
 
-                        echo "</li>";
-                        echo '<li class="divider"></li>';}
+                                  echo "</li>";
+                                  echo '<li class="divider"></li>';
+                              }
                         ?>
                         <li>
                             <a class="text-center" href="message_box.php">
@@ -171,20 +171,18 @@ margin-left:220px;
 
                                       $user= new User_Controller();
                                       $result=$user->index();
-                                      while ($data=$result->fetch())
-                                      {
-
-                                        echo '<tr class="odd gradeC">';
-                                            echo"<td>".$data['user_id']."</td>";
-                                            echo"<td>".$data['user_name']."</td>";
-                                            echo"<td>".$data['user_login']."</td>";
-                                            echo"<td>".$data['user_password']."</td>";
-                                            echo"<td>".$data['status']."</td>";
-                                           ?>
+                                      while ($data=$result->fetch()) {
+                                          echo '<tr class="odd gradeC">';
+                                          echo"<td>".$data['user_id']."</td>";
+                                          echo"<td>".$data['user_name']."</td>";
+                                          echo"<td>".$data['user_login']."</td>";
+                                          echo"<td>".$data['user_password']."</td>";
+                                          echo"<td>".$data['status']."</td>"; ?>
 											<td><a href="modify_user_view.php?id=<?php echo $data['user_id']; ?>" >Modify</a> <a href="#" id="del">Delete</a></td>
 											<input type="hidden" id="deluser" value="<?php echo $data['user_login']; ?>"/>
 											<?php
-                                      echo "</tr>";}
+                                      echo "</tr>";
+                                      }
                                       ?>
                                     </tbody>
                                 </table>

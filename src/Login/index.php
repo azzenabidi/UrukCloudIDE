@@ -28,15 +28,15 @@ margin-left:50px;
 require_once(__DIR__.'/../../vendor/autoload.php');
 use Devbox\Controller\Admin_Controller;
 use Devbox\Controller\User_Controller;
-if(isset($_GET['login_attempt']))
-{
-$admin=new Admin_Controller();
 
-$user=new User_Controller();
-$id=$_POST['username'];
-$pwd=$_POST['pwd'];
-$admin->admin_connect_action($id,$pwd);
-$user->user_connect_action($id,$pwd);
+if (isset($_GET['login_attempt'])) {
+    $admin=new Admin_Controller();
+
+    $user=new User_Controller();
+    $id=$_POST['username'];
+    $pwd=$_POST['pwd'];
+    $admin->admin_connect_action($id, $pwd);
+    $user->user_connect_action($id, $pwd);
 }
 
 ?>

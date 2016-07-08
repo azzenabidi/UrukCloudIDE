@@ -70,28 +70,28 @@ margin-left:220px;
                       require_once(__DIR__.'/../../vendor/autoload.php');
                       use Devbox\Controller\User_Controller;
                       use Devbox\Controller\Message_Controller;
-                            $msg= new Message_Controller();
+
+                      $msg= new Message_Controller();
                             $user= new User_Controller();
                             $result= $msg->viewmsgbox();
-                            while($data=$result->fetch())
-                            { echo "<li>";
-
-                            ?>
-                             <a href='message.php?id=<?php echo $data['message_id'];?>'>
+                            while ($data=$result->fetch()) {
+                                echo "<li>"; ?>
+                             <a href='message.php?id=<?php echo $data['message_id']; ?>'>
                               <div>
                                 <?php $users=$user->search_action($data['user_id']);
-                                while($data2=$users->fetch())
-                                {
-                                  echo " <strong>".$data2['user_name']."</strong>";
-                                  echo '<span class="pull-right text-muted">';
-                                      echo"<em>".$data['message_time']."</em>";
-                                  echo "</span>";
-                              echo "</div>";
-                              echo "<div>".substr($data['message_content'],0,30)."...</div>";
-                          echo "</a>";}
+                                while ($data2=$users->fetch()) {
+                                    echo " <strong>".$data2['user_name']."</strong>";
+                                    echo '<span class="pull-right text-muted">';
+                                    echo"<em>".$data['message_time']."</em>";
+                                    echo "</span>";
+                                    echo "</div>";
+                                    echo "<div>".substr($data['message_content'], 0, 30)."...</div>";
+                                    echo "</a>";
+                                }
 
-                      echo "</li>";
-                      echo '<li class="divider"></li>';}
+                                echo "</li>";
+                                echo '<li class="divider"></li>';
+                            }
                       ?>
 
                       <li>
@@ -171,19 +171,16 @@ margin-left:220px;
 
                                       $note= new Notification_Controller();
                                       $result=$note->index();
-                                      while ($data=$result->fetch())
-                                      {
-
-                                        echo '<tr class="odd gradeC">';
-                                            echo"<td>".$data['notification_id']."</td>";
-                                            echo"<td>".$data['notification_text']."</td>";
-                                            echo"<td>".$data['notification_time']."</td>";
-
-                                           ?>
+                                      while ($data=$result->fetch()) {
+                                          echo '<tr class="odd gradeC">';
+                                          echo"<td>".$data['notification_id']."</td>";
+                                          echo"<td>".$data['notification_text']."</td>";
+                                          echo"<td>".$data['notification_time']."</td>"; ?>
 											<td><a href="modify_notification_view.php?id=<?php echo $data['notification_id']; ?>" >Modify</a><a href="#" id="del">Delete</a></td>
 											<input type="hidden" id="delnote" value="<?php echo $data['notification_id']; ?>"/>
 											<?php
-                                      echo "</tr>";}
+                                      echo "</tr>";
+                                      }
                                       ?>
                                     </tbody>
                                 </table>

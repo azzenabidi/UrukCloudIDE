@@ -60,11 +60,11 @@ margin-left:220px;
 <?php
 require_once(__DIR__.'/../../vendor/autoload.php');
 use Devbox\Controller\User_Controller;
+
 $user= new User_Controller();
 $result=$user->searchbylogin_action($_SESSION['login']);
-while($data=$result->fetch())
-{
-?>
+while ($data=$result->fetch()) {
+    ?>
 
 
 
@@ -101,7 +101,8 @@ margin-left:220px;
          <form method="post" action="#" id="msgform">
 			<div class="form-group">
 
-                                            <input type="hidden" class="form-control" placeholder="" name="userid" id="userid" value="<?php echo $data['user_id'];} ?>">
+                                            <input type="hidden" class="form-control" placeholder="" name="userid" id="userid" value="<?php echo $data['user_id'];
+} ?>">
                                         </div>
              <div class="form-group">
                                             <label>Write Down Your Message</label>
