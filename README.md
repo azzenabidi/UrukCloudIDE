@@ -11,7 +11,7 @@ DevBox is a free as in freedom cloud IDE
 
 # Installation
 1. Extract the tarball into a location readable by your web server
-2. Point your browser to http://yourhost/install.html to begin the   database installation process
+2. Point your browser to http://yourhost/Install/install.html to begin the   database installation process
 3. enter the credentials to access the database
 4.  Click install
 5. Remove the install.html file from the Devbox installation path.
