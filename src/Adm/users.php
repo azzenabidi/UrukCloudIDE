@@ -153,6 +153,18 @@ margin-left:220px;
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
+
+            <?php
+
+
+            $user= new User_Controller();
+            $result=$user->index();
+
+            if ($result==0) {
+              echo "No User found";
+            }
+            else{
+             ?>
             <div class="table-responsive" >
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
@@ -169,8 +181,7 @@ margin-left:220px;
                                       <?php
 
 
-                                      $user= new User_Controller();
-                                      $result=$user->index();
+
                                       while ($data=$result->fetch()) {
                                           echo '<tr class="odd gradeC">';
                                           echo"<td>".$data['user_id']."</td>";
@@ -182,7 +193,8 @@ margin-left:220px;
 											<input type="hidden" id="deluser" value="<?php echo $data['user_login']; ?>"/>
 											<?php
                                       echo "</tr>";
-                                      }
+                                    }
+                                  }
                                       ?>
                                     </tbody>
                                 </table>
