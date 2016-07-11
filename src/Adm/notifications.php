@@ -127,10 +127,10 @@ margin-left:220px;
                             <a  href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a  class="active" href="users.php"><i class="fa fa-bar-chart-o fa-fw"></i>Users Management</a>
+                            <a   href="users.php"><i class="fa fa-bar-chart-o fa-fw"></i>Users Management</a>
                                                  </li>
                         <li>
-                            <a   href="notifications.php"><i class="fa fa-table fa-fw"></i>Notifications Management</a>
+                            <a   class="active" href="notifications.php"><i class="fa fa-table fa-fw"></i>Notifications Management</a>
                         </li>
 
                             </ul>
@@ -154,6 +154,17 @@ margin-left:220px;
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
+            <?php
+
+            use Devbox\Controller\Notification_Controller;
+
+            $note= new Notification_Controller();
+            $result=$note->index();
+            if ($result==0) {
+              echo "No Notification found";
+            }
+            else{
+             ?>
             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
@@ -166,11 +177,6 @@ margin-left:220px;
                                     </thead>
                                     <tbody>
                                       <?php
-
-                                      use Devbox\Controller\Notification_Controller;
-
-                                      $note= new Notification_Controller();
-                                      $result=$note->index();
                                       while ($data=$result->fetch()) {
                                           echo '<tr class="odd gradeC">';
                                           echo"<td>".$data['notification_id']."</td>";
@@ -180,7 +186,8 @@ margin-left:220px;
 											<input type="hidden" id="delnote" value="<?php echo $data['notification_id']; ?>"/>
 											<?php
                                       echo "</tr>";
-                                      }
+                                    }
+                                  }
                                       ?>
                                     </tbody>
                                 </table>
