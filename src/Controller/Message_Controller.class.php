@@ -13,7 +13,16 @@ class Message_Controller
     }
     public function index()
     {
-        return $this->msg->getmsg();
+        $data= $this->msg->getmsg();
+        if($data->rowCount()==0)
+        {
+          return 0;
+        }
+          else {
+
+
+        return $data ;}
+
     }
     public function sendmsg_action($msg, $user_id)
     {
@@ -35,6 +44,14 @@ class Message_Controller
     }
     public function viewmsgbox()
     {
-        return $this->msg->getlatest();
+        $data= $this->msg->getlatest();
+        if($data->rowCount()==0)
+        {
+          return 0;
+        }
+          else {
+
+
+        return $data ;}
     }
 }
