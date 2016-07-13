@@ -88,6 +88,12 @@ margin-left:220px;
                         $msg= new Message_Controller();
                               $user= new User_Controller();
                               $result= $msg->viewmsgbox();
+                              if ($result==0) {
+                                echo "No messages!";
+                              }
+                              else {
+
+
                               while ($data=$result->fetch()) {
                                   echo "<li>"; ?>
                                <a href='message.php?id=<?php echo $data['message_id']; ?>'>
@@ -105,7 +111,7 @@ margin-left:220px;
 
                                   echo "</li>";
                                   echo '<li class="divider"></li>';
-                              }
+                              }}
                         ?>
                         <li>
                             <a class="text-center" href="#">

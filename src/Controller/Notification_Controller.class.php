@@ -13,7 +13,16 @@ class Notification_Controller
     }
     public function index()
     {
-        return $this->note->getnotifications();
+        $data= $this->note->getnotifications();
+        if($data->rowCount()==0)
+        {
+          return 0;
+        }
+          else {
+
+
+        return $data ;}
+
     }
     public function addnotification_action($text, $admin_id)
     {

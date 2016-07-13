@@ -59,48 +59,54 @@ margin-left:220px;
             </div>
             <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-messages">
-                        <?php
+                        <ul class="nav navbar-top-links navbar-right">
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-messages">
+                                    <?php
 
-                        require_once(__DIR__.'/../../vendor/autoload.php');
-                        use Devbox\Controller\User_Controller;
-                        use Devbox\Controller\Message_Controller;
+                                    require_once(__DIR__.'/../../vendor/autoload.php');
+                                    use Devbox\Controller\User_Controller;
+                                    use Devbox\Controller\Message_Controller;
 
-                        $msg= new Message_Controller();
-                              $user= new User_Controller();
-                              $result= $msg->viewmsgbox();
-                              while ($data=$result->fetch()) {
-                                  echo "<li>"; ?>
-                               <a href='message.php?id=<?php echo $data['message_id']; ?>'>
-                                <div>
-                                  <?php $users=$user->search_action($data['user_id']);
-                                  while ($data2=$users->fetch()) {
-                                      echo " <strong>".$data2['user_name']."</strong>";
-                                      echo '<span class="pull-right text-muted">';
-                                      echo"<em>".$data['message_time']."</em>";
-                                      echo "</span>";
-                                      echo "</div>";
-                                      echo "<div>".substr($data['message_content'], 0, 30)."...</div>";
-                                      echo "</a>";
-                                  }
+                                    $msg= new Message_Controller();
+                                          $user= new User_Controller();
+                                          $result= $msg->viewmsgbox();
+                                          if ($result==0) {
+                                            echo "No messages!";
+                                          }
+                                          else {
 
-                                  echo "</li>";
-                                  echo '<li class="divider"></li>';
-                              }
-                        ?>
-                        <li>
-                            <a class="text-center" href="message_box.php">
-                                <strong>Read All Messages</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-messages -->
+
+                                          while ($data=$result->fetch()) {
+                                              echo "<li>"; ?>
+                                           <a href='message.php?id=<?php echo $data['message_id']; ?>'>
+                                            <div>
+                                              <?php $users=$user->search_action($data['user_id']);
+                                              while ($data2=$users->fetch()) {
+                                                  echo " <strong>".$data2['user_name']."</strong>";
+                                                  echo '<span class="pull-right text-muted">';
+                                                  echo"<em>".$data['message_time']."</em>";
+                                                  echo "</span>";
+                                                  echo "</div>";
+                                                  echo "<div>".substr($data['message_content'], 0, 30)."...</div>";
+                                                  echo "</a>";
+                                              }
+
+                                              echo "</li>";
+                                              echo '<li class="divider"></li>';
+                                          }}
+                                    ?>
+                                    <li>
+                                        <a class="text-center" href="#">
+                                            <strong>Read All Messages</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- /.dropdown-messages -->
                 </li>
 
                 <li class="dropdown">
@@ -153,6 +159,18 @@ margin-left:220px;
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
+
+            <?php
+
+
+            $user= new User_Controller();
+            $result=$user->index();
+
+            if ($result==0) {
+              echo "No User found";
+            }
+            else{
+             ?>
             <div class="table-responsive" >
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
@@ -169,8 +187,7 @@ margin-left:220px;
                                       <?php
 
 
-                                      $user= new User_Controller();
-                                      $result=$user->index();
+
                                       while ($data=$result->fetch()) {
                                           echo '<tr class="odd gradeC">';
                                           echo"<td>".$data['user_id']."</td>";
@@ -182,7 +199,8 @@ margin-left:220px;
 											<input type="hidden" id="deluser" value="<?php echo $data['user_login']; ?>"/>
 											<?php
                                       echo "</tr>";
-                                      }
+                                    }
+                                  }
                                       ?>
                                     </tbody>
                                 </table>

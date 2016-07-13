@@ -96,7 +96,14 @@ while ($data=$result->fetch()) {
     public function index()
     {
         $data=$this->user->getusers();
-        return $data ;
+        if($data->rowCount()==0)
+        {
+          return 0;
+        }
+          else {
+
+
+        return $data ;}
     }
     public function searchbylogin_action($login)
     {
