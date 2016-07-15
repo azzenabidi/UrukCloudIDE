@@ -154,7 +154,7 @@ session_start();
             </div>
 
             <p>UrukCloudIDE is free software;you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
-            <br><p>Feel Free to Visit our <a href="../../devbox/index.php" target="blank">Website</a> for more information </p>
+            <br><p>Feel Free to Visit our <a href="https://github.com/azzenovic/UrukCloudIDE" target="blank">Github repository</a> for more information </p>
             <br><p>Thanks for choosing UrukCloudIDE</p>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
