@@ -276,7 +276,18 @@ context.init({preventDoubleContext: false});
 
 
 
-	{text: 'Create', href: '#'},
+	{text: 'Create',action: function(e, selector) {  $("#nf").click(function (e) {
+    e.preventDefault();
+       $("#dialogfile").dialog({
+            autoOpen: true,
+            title: 'Create File',
+            height: 200,
+  width: 350
+
+            });
+
+
+     }},
 
 	{text: 'Rename', href: '#'},
 
