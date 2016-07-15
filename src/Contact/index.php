@@ -59,7 +59,7 @@ margin-left:220px;
 <body>
 <?php
 require_once(__DIR__.'/../../vendor/autoload.php');
-use Devbox\Controller\User_Controller;
+use UrukCloudIDE\Controller\User_Controller;
 
 $user= new User_Controller();
 $result=$user->searchbylogin_action($_SESSION['login']);

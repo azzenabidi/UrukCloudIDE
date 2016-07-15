@@ -1,7 +1,7 @@
 <?php
-namespace Devbox\Model;
+namespace UrukCloudIDE\Model;
 
-use Devbox\DAO\UserDAO;
+use UrukCloudIDE\DAO\UserDAO;
 
 class User extends Person
 {

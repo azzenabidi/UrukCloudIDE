@@ -1,7 +1,7 @@
 <?php
-namespace Devbox\Model;
+namespace UrukCloudIDE\Model;
 
-use Devbox\DAO\AdminDAO;
+use UrukCloudIDE\DAO\AdminDAO;
 
 class Admin extends Person
 {

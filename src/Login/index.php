@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Welcome to Devbox - IDE for the masses</title>
+<title>Welcome to UrukCloudIDE - IDE for the masses</title>
 <meta charset="UTF-8" />
 <link rel="stylesheet" type="text/css" href="css/reset.css">
 <link rel="stylesheet" type="text/css" href="css/structure.css">
@@ -26,8 +26,8 @@ margin-left:50px;
 	 <fieldset id="ffff"><?php
 
 require_once(__DIR__.'/../../vendor/autoload.php');
-use Devbox\Controller\Admin_Controller;
-use Devbox\Controller\User_Controller;
+use UrukCloudIDE\Controller\Admin_Controller;
+use UrukCloudIDE\Controller\User_Controller;
 
 if (isset($_GET['login_attempt'])) {
     $admin=new Admin_Controller();
@@ -50,7 +50,7 @@ if (isset($_GET['login_attempt'])) {
 	</footer>
 </form>
 <footer id="main">
- <a href="../../devbox/index.php">Devbox Foundation</a>
+ <a href="../../devbox/index.php">UrukCloudIDE Foundation</a>
 </footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 

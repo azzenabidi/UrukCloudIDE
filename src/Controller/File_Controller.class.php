@@ -1,8 +1,8 @@
 <?php
 
-namespace Devbox\Controller;
+namespace UrukCloudIDE\Controller;
 
-use Devbox\Model\File;
+use UrukCloudIDE\Model\File;
 
 class File_Controller
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Devbox\Controller;
+namespace UrukCloudIDE\Controller;
 
-use Devbox\Model\Notification;
+use UrukCloudIDE\Model\Notification;
 
 class Notification_Controller
 {
@@ -14,15 +14,11 @@ class Notification_Controller
     public function index()
     {
         $data= $this->note->getnotifications();
-        if($data->rowCount()==0)
-        {
-          return 0;
+        if ($data->rowCount()==0) {
+            return 0;
+        } else {
+            return $data ;
         }
-          else {
-
-
-        return $data ;}
-
     }
     public function addnotification_action($text, $admin_id)
     {

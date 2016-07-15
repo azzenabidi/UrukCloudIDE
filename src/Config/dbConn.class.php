@@ -1,7 +1,7 @@
 <?php
 
 //db connection class using singleton pattern
-namespace Devbox\Config;
+namespace UrukCloudIDE\Config;
 
 use PDO;
 

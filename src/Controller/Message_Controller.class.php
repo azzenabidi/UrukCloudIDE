@@ -1,8 +1,8 @@
 <?php
 
-namespace Devbox\Controller;
+namespace UrukCloudIDE\Controller;
 
-use Devbox\Model\Message;
+use UrukCloudIDE\Model\Message;
 
 class Message_Controller
 {
@@ -14,15 +14,11 @@ class Message_Controller
     public function index()
     {
         $data= $this->msg->getmsg();
-        if($data->rowCount()==0)
-        {
-          return 0;
+        if ($data->rowCount()==0) {
+            return 0;
+        } else {
+            return $data ;
         }
-          else {
-
-
-        return $data ;}
-
     }
     public function sendmsg_action($msg, $user_id)
     {
@@ -45,13 +41,10 @@ class Message_Controller
     public function viewmsgbox()
     {
         $data= $this->msg->getlatest();
-        if($data->rowCount()==0)
-        {
-          return 0;
+        if ($data->rowCount()==0) {
+            return 0;
+        } else {
+            return $data ;
         }
-          else {
-
-
-        return $data ;}
     }
 }

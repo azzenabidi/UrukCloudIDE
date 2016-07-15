@@ -12,7 +12,7 @@ session_start();
     <meta name="description" content="">
     <meta name="author" content="">
 
-     <title>Devbox - Control Panel</title>
+     <title>UrukCloudIDE - Control Panel</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -48,7 +48,7 @@ session_start();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                 <a class="navbar-brand" href="index.php">Devbox - Admin Dashboard</a>
+                 <a class="navbar-brand" href="index.php">UrukCloudIDE - Admin Dashboard</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -61,8 +61,8 @@ session_start();
                                     <?php
 
                                     require_once(__DIR__.'/../../vendor/autoload.php');
-                                    use Devbox\Controller\User_Controller;
-                                    use Devbox\Controller\Message_Controller;
+                                    use UrukCloudIDE\Controller\User_Controller;
+                                    use UrukCloudIDE\Controller\Message_Controller;
 
                                     $msg= new Message_Controller();
                                           $user= new User_Controller();
@@ -147,8 +147,8 @@ session_start();
                     <div class="col-lg-12">
 						<?php
             require_once(__DIR__.'/../../vendor/autoload.php');
-            use Devbox\Controller\User_Controller;
-            use Devbox\Controller\Message_Controller;
+            use UrukCloudIDE\Controller\User_Controller;
+            use UrukCloudIDE\Controller\Message_Controller;
 						if(isset($_GET['id']))
 						{
                               $msg= new Message_Controller();

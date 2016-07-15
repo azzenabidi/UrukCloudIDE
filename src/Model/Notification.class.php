@@ -1,7 +1,7 @@
 <?php
-namespace Devbox\Model;
+namespace UrukCloudIDE\Model;
 
-use Devbox\DAO\NotificationDAO;
+use UrukCloudIDE\DAO\NotificationDAO;
 
 class Notification
 {

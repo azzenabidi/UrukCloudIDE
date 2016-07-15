@@ -13,7 +13,7 @@ session_start();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Devbox - Control Panel</title>
+    <title>UrukCloudIDE - Control Panel</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -55,7 +55,7 @@ session_start();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">Devbox - Admin Dashboard</a>
+                <a class="navbar-brand" href="index.php">UrukCloudIDE - Admin Dashboard</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -68,36 +68,34 @@ session_start();
                                     <?php
 
                                     require_once(__DIR__.'/../../vendor/autoload.php');
-                                    use Devbox\Controller\User_Controller;
-                                    use Devbox\Controller\Message_Controller;
+                                    use UrukCloudIDE\Controller\User_Controller;
+                                    use UrukCloudIDE\Controller\Message_Controller;
 
                                     $msg= new Message_Controller();
                                           $user= new User_Controller();
                                           $result= $msg->viewmsgbox();
                                           if ($result==0) {
-                                            echo "No messages!";
-                                          }
-                                          else {
-
-
-                                          while ($data=$result->fetch()) {
-                                              echo "<li>"; ?>
+                                              echo "No messages!";
+                                          } else {
+                                              while ($data=$result->fetch()) {
+                                                  echo "<li>"; ?>
                                            <a href='message.php?id=<?php echo $data['message_id']; ?>'>
                                             <div>
                                               <?php $users=$user->search_action($data['user_id']);
-                                              while ($data2=$users->fetch()) {
-                                                  echo " <strong>".$data2['user_name']."</strong>";
-                                                  echo '<span class="pull-right text-muted">';
-                                                  echo"<em>".$data['message_time']."</em>";
-                                                  echo "</span>";
-                                                  echo "</div>";
-                                                  echo "<div>".substr($data['message_content'], 0, 30)."...</div>";
-                                                  echo "</a>";
-                                              }
+                                                  while ($data2=$users->fetch()) {
+                                                      echo " <strong>".$data2['user_name']."</strong>";
+                                                      echo '<span class="pull-right text-muted">';
+                                                      echo"<em>".$data['message_time']."</em>";
+                                                      echo "</span>";
+                                                      echo "</div>";
+                                                      echo "<div>".substr($data['message_content'], 0, 30)."...</div>";
+                                                      echo "</a>";
+                                                  }
 
-                                              echo "</li>";
-                                              echo '<li class="divider"></li>';
-                                          }}
+                                                  echo "</li>";
+                                                  echo '<li class="divider"></li>';
+                                              }
+                                          }
                                     ?>
                                     <li>
                                         <a class="text-center" href="#">
@@ -155,9 +153,9 @@ session_start();
                 <!-- /.col-lg-12 -->
             </div>
 
-            <p>Devbox is free software;you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
-            <br><p>Feel Free to Visit our <a href="../../devbox/index.php" target="blank">Website</a> for more information </p>
-            <br><p>Thanks for choosing Devbox</p>
+            <p>UrukCloudIDE is free software;you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
+            <br><p>Feel Free to Visit our <a href="https://github.com/azzenovic/UrukCloudIDE" target="blank">Github repository</a> for more information </p>
+            <br><p>Thanks for choosing UrukCloudIDE</p>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 

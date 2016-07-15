@@ -11,11 +11,11 @@
 ,
 "autoload": {
   "psr-4": {
-    "Devbox\\":"src/",
-    "Devbox\\Model\\":"src/Model/",
-    "Devbox\\DAO\\":"src/DAO/",
-    "Devbox\\Controller\\":"src/Controller/",
-    "Devbox\\Config\\":"src/Config/"
+    "UrukCloudIDE\\":"src/",
+    "UrukCloudIDE\\Model\\":"src/Model/",
+    "UrukCloudIDE\\DAO\\":"src/DAO/",
+    "UrukCloudIDE\\Controller\\":"src/Controller/",
+    "UrukCloudIDE\\Config\\":"src/Config/"
   }
 }
 

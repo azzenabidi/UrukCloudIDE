@@ -1,7 +1,7 @@
 <?php
-namespace Devbox\Model;
+namespace UrukCloudIDE\Model;
 
-use Devbox\DAO\MessageDAO;
+use UrukCloudIDE\DAO\MessageDAO;
 
 class Message
 {
