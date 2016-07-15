@@ -1,7 +1,7 @@
 <?php
-namespace Devbox\Model;
+namespace UrukCloudIDE\Model;
 
-use Devbox\DAO\ProjectDAO;
+use UrukCloudIDE\DAO\ProjectDAO;
 
 class Project
 {

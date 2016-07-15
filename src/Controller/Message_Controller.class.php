@@ -1,8 +1,8 @@
 <?php
 
-namespace Devbox\Controller;
+namespace UrukCloudIDE\Controller;
 
-use Devbox\Model\Message;
+use UrukCloudIDE\Model\Message;
 
 class Message_Controller
 {

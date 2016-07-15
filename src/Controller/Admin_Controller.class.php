@@ -14,10 +14,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this library. If not, see <http://www.gnu.org/licenses/>.*/
 
-namespace Devbox\Controller;
+namespace UrukCloudIDE\Controller;
 
-use Devbox\Model\Person;
-use Devbox\Model\Admin;
+use UrukCloudIDE\Model\Person;
+use UrukCloudIDE\Model\Admin;
 
 class Admin_Controller
 {

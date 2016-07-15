@@ -19,6 +19,14 @@ class ComposerStaticInitca3f8a66469643c6150bf24b8352e441
         array (
             'Webmozart\\Assert\\' => 17,
         ),
+        'U' => 
+        array (
+            'UrukCloudIDE\\Model\\' => 19,
+            'UrukCloudIDE\\DAO\\' => 17,
+            'UrukCloudIDE\\Controller\\' => 24,
+            'UrukCloudIDE\\Config\\' => 20,
+            'UrukCloudIDE\\' => 13,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -39,11 +47,6 @@ class ComposerStaticInitca3f8a66469643c6150bf24b8352e441
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
-            'Devbox\\Model\\' => 13,
-            'Devbox\\DAO\\' => 11,
-            'Devbox\\Controller\\' => 18,
-            'Devbox\\Config\\' => 14,
-            'Devbox\\' => 7,
             'DeepCopy\\' => 9,
         ),
         'B' => 
@@ -62,6 +65,26 @@ class ComposerStaticInitca3f8a66469643c6150bf24b8352e441
         'Webmozart\\Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
+        ),
+        'UrukCloudIDE\\Model\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Model',
+        ),
+        'UrukCloudIDE\\DAO\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/DAO',
+        ),
+        'UrukCloudIDE\\Controller\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Controller',
+        ),
+        'UrukCloudIDE\\Config\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Config',
+        ),
+        'UrukCloudIDE\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
@@ -111,26 +134,6 @@ class ComposerStaticInitca3f8a66469643c6150bf24b8352e441
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
         ),
-        'Devbox\\Model\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src/Model',
-        ),
-        'Devbox\\DAO\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src/DAO',
-        ),
-        'Devbox\\Controller\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src/Controller',
-        ),
-        'Devbox\\Config\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src/Config',
-        ),
-        'Devbox\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
-        ),
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
@@ -175,26 +178,6 @@ class ComposerStaticInitca3f8a66469643c6150bf24b8352e441
         'DeepCopy\\TypeFilter\\ShallowCopyFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/ShallowCopyFilter.php',
         'DeepCopy\\TypeFilter\\TypeFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/TypeFilter.php',
         'DeepCopy\\TypeMatcher\\TypeMatcher' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeMatcher/TypeMatcher.php',
-        'Devbox\\Config\\dbConn' => __DIR__ . '/../..' . '/src/Config/dbConn.class.php',
-        'Devbox\\Controller\\Admin_Controller' => __DIR__ . '/../..' . '/src/Controller/Admin_Controller.class.php',
-        'Devbox\\Controller\\File_Controller' => __DIR__ . '/../..' . '/src/Controller/File_Controller.class.php',
-        'Devbox\\Controller\\Message_Controller' => __DIR__ . '/../..' . '/src/Controller/Message_Controller.class.php',
-        'Devbox\\Controller\\Notification_Controller' => __DIR__ . '/../..' . '/src/Controller/Notification_Controller.class.php',
-        'Devbox\\Controller\\Project_Controller' => __DIR__ . '/../..' . '/src/Controller/Project_Controller.class.php',
-        'Devbox\\Controller\\User_Controller' => __DIR__ . '/../..' . '/src/Controller/User_Controller.class.php',
-        'Devbox\\DAO\\AdminDAO' => __DIR__ . '/../..' . '/src/DAO/AdminDAO.class.php',
-        'Devbox\\DAO\\FileDAO' => __DIR__ . '/../..' . '/src/DAO/FileDAO.class.php',
-        'Devbox\\DAO\\MessageDAO' => __DIR__ . '/../..' . '/src/DAO/MessageDAO.class.php',
-        'Devbox\\DAO\\NotificationDAO' => __DIR__ . '/../..' . '/src/DAO/NotificationDAO.class.php',
-        'Devbox\\DAO\\ProjectDAO' => __DIR__ . '/../..' . '/src/DAO/ProjectDAO.class.php',
-        'Devbox\\DAO\\UserDAO' => __DIR__ . '/../..' . '/src/DAO/UserDAO.class.php',
-        'Devbox\\Model\\Admin' => __DIR__ . '/../..' . '/src/Model/Admin.class.php',
-        'Devbox\\Model\\File' => __DIR__ . '/../..' . '/src/Model/File.class.php',
-        'Devbox\\Model\\Message' => __DIR__ . '/../..' . '/src/Model/Message.class.php',
-        'Devbox\\Model\\Notification' => __DIR__ . '/../..' . '/src/Model/Notification.class.php',
-        'Devbox\\Model\\Person' => __DIR__ . '/../..' . '/src/Model/Person.class.php',
-        'Devbox\\Model\\Project' => __DIR__ . '/../..' . '/src/Model/Project.class.php',
-        'Devbox\\Model\\User' => __DIR__ . '/../..' . '/src/Model/User.class.php',
         'Doctrine\\Instantiator\\Exception\\ExceptionInterface' => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator/Exception/ExceptionInterface.php',
         'Doctrine\\Instantiator\\Exception\\InvalidArgumentException' => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator/Exception/InvalidArgumentException.php',
         'Doctrine\\Instantiator\\Exception\\UnexpectedValueException' => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator/Exception/UnexpectedValueException.php',
@@ -1245,6 +1228,26 @@ class ComposerStaticInitca3f8a66469643c6150bf24b8352e441
         'Symfony\\Component\\Yaml\\Yaml' => __DIR__ . '/..' . '/symfony/yaml/Yaml.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'UrukCloudIDE\\Config\\dbConn' => __DIR__ . '/../..' . '/src/Config/dbConn.class.php',
+        'UrukCloudIDE\\Controller\\Admin_Controller' => __DIR__ . '/../..' . '/src/Controller/Admin_Controller.class.php',
+        'UrukCloudIDE\\Controller\\File_Controller' => __DIR__ . '/../..' . '/src/Controller/File_Controller.class.php',
+        'UrukCloudIDE\\Controller\\Message_Controller' => __DIR__ . '/../..' . '/src/Controller/Message_Controller.class.php',
+        'UrukCloudIDE\\Controller\\Notification_Controller' => __DIR__ . '/../..' . '/src/Controller/Notification_Controller.class.php',
+        'UrukCloudIDE\\Controller\\Project_Controller' => __DIR__ . '/../..' . '/src/Controller/Project_Controller.class.php',
+        'UrukCloudIDE\\Controller\\User_Controller' => __DIR__ . '/../..' . '/src/Controller/User_Controller.class.php',
+        'UrukCloudIDE\\DAO\\AdminDAO' => __DIR__ . '/../..' . '/src/DAO/AdminDAO.class.php',
+        'UrukCloudIDE\\DAO\\FileDAO' => __DIR__ . '/../..' . '/src/DAO/FileDAO.class.php',
+        'UrukCloudIDE\\DAO\\MessageDAO' => __DIR__ . '/../..' . '/src/DAO/MessageDAO.class.php',
+        'UrukCloudIDE\\DAO\\NotificationDAO' => __DIR__ . '/../..' . '/src/DAO/NotificationDAO.class.php',
+        'UrukCloudIDE\\DAO\\ProjectDAO' => __DIR__ . '/../..' . '/src/DAO/ProjectDAO.class.php',
+        'UrukCloudIDE\\DAO\\UserDAO' => __DIR__ . '/../..' . '/src/DAO/UserDAO.class.php',
+        'UrukCloudIDE\\Model\\Admin' => __DIR__ . '/../..' . '/src/Model/Admin.class.php',
+        'UrukCloudIDE\\Model\\File' => __DIR__ . '/../..' . '/src/Model/File.class.php',
+        'UrukCloudIDE\\Model\\Message' => __DIR__ . '/../..' . '/src/Model/Message.class.php',
+        'UrukCloudIDE\\Model\\Notification' => __DIR__ . '/../..' . '/src/Model/Notification.class.php',
+        'UrukCloudIDE\\Model\\Person' => __DIR__ . '/../..' . '/src/Model/Person.class.php',
+        'UrukCloudIDE\\Model\\Project' => __DIR__ . '/../..' . '/src/Model/Project.class.php',
+        'UrukCloudIDE\\Model\\User' => __DIR__ . '/../..' . '/src/Model/User.class.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',

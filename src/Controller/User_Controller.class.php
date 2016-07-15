@@ -1,8 +1,8 @@
 <?php
 
-namespace Devbox\Controller;
+namespace UrukCloudIDE\Controller;
 
-use Devbox\Model\User;
+use UrukCloudIDE\Model\User;
 
 class User_Controller
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Devbox\Model;
+namespace UrukCloudIDE\Model;
 
 abstract class Person
 {

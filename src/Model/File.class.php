@@ -1,7 +1,7 @@
 <?php
-namespace Devbox\Model;
+namespace UrukCloudIDE\Model;
 
-use Devbox\DAO\FileDAO;
+use UrukCloudIDE\DAO\FileDAO;
 
 class File
 {

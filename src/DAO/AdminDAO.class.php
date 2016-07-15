@@ -1,7 +1,7 @@
 <?php
-namespace Devbox\DAO;
+namespace UrukCloudIDE\DAO;
 
-use Devbox\Config\dbConn;
+use UrukCloudIDE\Config\dbConn;
 
 class AdminDAO
 {

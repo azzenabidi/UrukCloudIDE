@@ -1,8 +1,8 @@
 <?php
 
-namespace Devbox\Controller;
+namespace UrukCloudIDE\Controller;
 
-use Devbox\Model\Notification;
+use UrukCloudIDE\Model\Notification;
 
 class Notification_Controller
 {

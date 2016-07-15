@@ -1,8 +1,8 @@
 <?php
 
-namespace Devbox\Controller;
+namespace UrukCloudIDE\Controller;
 
-use Devbox\Model\Project;
+use UrukCloudIDE\Model\Project;
 
 class Project_Controller
 {

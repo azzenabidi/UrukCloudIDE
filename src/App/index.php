@@ -14,23 +14,23 @@ if (!isset($_SESSION['login'])) {
  <!-- Bootstrap Core CSS -->
 
 
-    <link rel="stylesheet" href="/Devbox/src/public/css/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="/Devbox/src/public/css/font-awesome.min.css">
-<link rel="stylesheet" href="/Devbox/src/public/css/bootstrap/bootstrap-theme.min.css">
-<link rel="stylesheet" href="/Devbox/src/public/css/bootstrap/context.bootstrap.css">
-<link rel="stylesheet" href="/Devbox/src/public/css/bootstrap/context.standalone.css">
+    <link rel="stylesheet" href="/UrukCloudIDE/src/public/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/UrukCloudIDE/src/public/css/font-awesome.min.css">
+<link rel="stylesheet" href="/UrukCloudIDE/src/public/css/bootstrap/bootstrap-theme.min.css">
+<link rel="stylesheet" href="/UrukCloudIDE/src/public/css/bootstrap/context.bootstrap.css">
+<link rel="stylesheet" href="/UrukCloudIDE/src/public/css/bootstrap/context.standalone.css">
 <!-- jquery  ui-->
 
-<link href="/Devbox/src/public/css/jquery-ui/jquery-ui.min.css" rel="stylesheet">
-<link href="/Devbox/src/public/css/jquery-ui/jquery-ui.structure.min.css" rel="stylesheet">
-<link href="/Devbox/src/public/css/jquery-ui/jquery-ui.theme.min.css" rel="stylesheet">
+<link href="/UrukCloudIDE/src/public/css/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+<link href="/UrukCloudIDE/src/public/css/jquery-ui/jquery-ui.structure.min.css" rel="stylesheet">
+<link href="/UrukCloudIDE/src/public/css/jquery-ui/jquery-ui.theme.min.css" rel="stylesheet">
 
-<!-- Devbox -->
+<!-- UrukCloudIDE -->
 
-    <link href="/Devbox/src/public/css/app.css" rel="stylesheet">
-   <link href="/Devbox/src/public/css/jqueryFileTree.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="/UrukCloudIDE/src/public/css/app.css" rel="stylesheet">
+   <link href="/UrukCloudIDE/src/public/css/jqueryFileTree.css" rel="stylesheet" type="text/css" media="screen" />
 
-  <title>Devbox/src</title>
+  <title>UrukCloudIDE/src</title>
 <style>#dialog{
 display:none;
 }
@@ -124,7 +124,7 @@ display:none;
               <?php
 
                               require_once(__DIR__.'/../../vendor/autoload.php');
-use Devbox\Controller\Notification_Controller;
+use UrukCloudIDE\Controller\Notification_Controller;
 
 $note= new Notification_Controller();
 
@@ -147,19 +147,19 @@ $note= new Notification_Controller();
 
 <!-- JQUERY -->
 
-<script src="/Devbox/src/public/js/jquery.min.js"></script>
- <script src="/Devbox/src/public/js/jquery.easing.js" type="text/javascript"></script>
- <script src="/Devbox/src/public/js/jqueryFileTree.js" type="text/javascript"></script>
+<script src="/UrukCloudIDE/src/public/js/jquery.min.js"></script>
+ <script src="/UrukCloudIDE/src/public/js/jquery.easing.js" type="text/javascript"></script>
+ <script src="/UrukCloudIDE/src/public/js/jqueryFileTree.js" type="text/javascript"></script>
 
  <!-- JQUERY UI-->
-<script src="/Devbox/src/public/js/jquery-ui.min.js"></script>
+<script src="/UrukCloudIDE/src/public/js/jquery-ui.min.js"></script>
 
 	<!-- BOOTSTRAP -->
 
-		<script src="/Devbox/src/public/js/bootstrap/bootstrap.min.js"></script>
-		<script src="/Devbox/src/public/js/bootstrap/context.js"></script>
+		<script src="/UrukCloudIDE/src/public/js/bootstrap/bootstrap.min.js"></script>
+		<script src="/UrukCloudIDE/src/public/js/bootstrap/context.js"></script>
 
-<!-- ACE Devbox/src -->
+<!-- ACE UrukCloudIDE/src -->
 
 <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="ace/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
@@ -192,7 +192,7 @@ $note= new Notification_Controller();
   data: 'file='+test,
   success: function(data) {
 	//called when successful
-	Devbox/src.setValue(data);
+	UrukCloudIDE/src.setValue(data);
   },
   error: function(e) {
 	//called when there is an error

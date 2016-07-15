@@ -1,7 +1,7 @@
 <?php
-namespace Devbox\DAO;
+namespace UrukCloudIDE\DAO;
 
-use Devbox\Config\dbConn;
+use UrukCloudIDE\Config\dbConn;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 
