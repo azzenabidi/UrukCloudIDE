@@ -89,29 +89,27 @@ margin-left:220px;
                                           $user= new User_Controller();
                                           $result= $msg->viewmsgbox();
                                           if ($result==0) {
-                                            echo "No messages!";
-                                          }
-                                          else {
-
-
-                                          while ($data=$result->fetch()) {
-                                              echo "<li>"; ?>
+                                              echo "No messages!";
+                                          } else {
+                                              while ($data=$result->fetch()) {
+                                                  echo "<li>"; ?>
                                            <a href='message.php?id=<?php echo $data['message_id']; ?>'>
                                             <div>
                                               <?php $users=$user->search_action($data['user_id']);
-                                              while ($data2=$users->fetch()) {
-                                                  echo " <strong>".$data2['user_name']."</strong>";
-                                                  echo '<span class="pull-right text-muted">';
-                                                  echo"<em>".$data['message_time']."</em>";
-                                                  echo "</span>";
-                                                  echo "</div>";
-                                                  echo "<div>".substr($data['message_content'], 0, 30)."...</div>";
-                                                  echo "</a>";
-                                              }
+                                                  while ($data2=$users->fetch()) {
+                                                      echo " <strong>".$data2['user_name']."</strong>";
+                                                      echo '<span class="pull-right text-muted">';
+                                                      echo"<em>".$data['message_time']."</em>";
+                                                      echo "</span>";
+                                                      echo "</div>";
+                                                      echo "<div>".substr($data['message_content'], 0, 30)."...</div>";
+                                                      echo "</a>";
+                                                  }
 
-                                              echo "</li>";
-                                              echo '<li class="divider"></li>';
-                                          }}
+                                                  echo "</li>";
+                                                  echo '<li class="divider"></li>';
+                                              }
+                                          }
                                     ?>
                                     <li>
                                         <a class="text-center" href="#">
@@ -198,9 +196,9 @@ use Devbox\Controller\Notification_Controller;
 
 if (isset($_GET['id'])) {
     $notification= new Notification_Controller();
-$result=$notification->search_action($_GET['id']);
-while ($data=$result->fetch()) {
-    ?>
+    $result=$notification->search_action($_GET['id']);
+    while ($data=$result->fetch()) {
+        ?>
              <form method="post" action="#" id="upform">
 			<div class="form-group">
 
@@ -215,10 +213,11 @@ while ($data=$result->fetch()) {
         </form>
         <div id="div1"></div>
          <?php
-}
+
+    }
 } else {
-                                            echo "<b>Ooops! The Page you are requesting doesn't exist anymore!</b>";
-                                        }
+    echo "<b>Ooops! The Page you are requesting doesn't exist anymore!</b>";
+}
                                          ?>
         </div>
         <!-- /#page-wrapper -->

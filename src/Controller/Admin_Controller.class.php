@@ -30,29 +30,29 @@ public function __construct()
 
 $this->admin= new Admin();
 }
-public function admin_connect_action($login, $password)
-{
-    if (!empty($password) and !empty($login)) {
-        $this->admin->loginconstructor($login, $password);
-        $verify=$this->admin->connect();
-        if ($verify==1) {
-            session_start();
-            $_SESSION["admin_login"] = $login;
-            $_SESSION["admin_password"] = $password;
-            header('location:../Adm/index.php');
+    public function admin_connect_action($login, $password)
+    {
+        if (!empty($password) and !empty($login)) {
+            $this->admin->loginconstructor($login, $password);
+            $verify=$this->admin->connect();
+            if ($verify==1) {
+                session_start();
+                $_SESSION["admin_login"] = $login;
+                $_SESSION["admin_password"] = $password;
+                header('location:../Adm/index.php');
+            } else {
+                echo "username or password is invalid!";
+            }
         } else {
-            echo "username or password is invalid!";
+            echo "All fields are required";
         }
-    } else {
-        echo "All fields are required";
     }
-}
-public function admin_disconnect_action($login)
-{
-    $this->admin->setadminlogin($login);
-    $result=$this->admin->disconnect();
-    if ($result==1) {
-        header("location: ../../Login/index.php");
+    public function admin_disconnect_action($login)
+    {
+        $this->admin->setadminlogin($login);
+        $result=$this->admin->disconnect();
+        if ($result==1) {
+            header("location: ../../Login/index.php");
+        }
     }
-}
 }

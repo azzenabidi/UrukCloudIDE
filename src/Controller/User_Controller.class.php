@@ -20,13 +20,13 @@ class User_Controller
             $verify=$this->user->connect();
             if ($verify==1) {
                 $result=$this->user->getusersbylogin($login);
-while ($data=$result->fetch()) {
-    session_start();
-    $_SESSION['user_id']=$data['user_id'];
-    $_SESSION["login"] = $login;
-    $_SESSION["password"] = $password;
-    header('location:../App/index.php');
-}
+                while ($data=$result->fetch()) {
+                    session_start();
+                    $_SESSION['user_id']=$data['user_id'];
+                    $_SESSION["login"] = $login;
+                    $_SESSION["password"] = $password;
+                    header('location:../App/index.php');
+                }
             } else {
                 return "username or password is invalid!";
             }
@@ -96,14 +96,11 @@ while ($data=$result->fetch()) {
     public function index()
     {
         $data=$this->user->getusers();
-        if($data->rowCount()==0)
-        {
-          return 0;
+        if ($data->rowCount()==0) {
+            return 0;
+        } else {
+            return $data ;
         }
-          else {
-
-
-        return $data ;}
     }
     public function searchbylogin_action($login)
     {
