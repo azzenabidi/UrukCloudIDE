@@ -65,7 +65,7 @@ ace.define("ace/mode/golang_highlight_rules",["require","exports","module","ace/
             "float64|complex64|complex128|byte|rune|uint|int|uintptr|bool|error"
         );
         var builtinFunctions = (
-            "make|close|new|panic|recover"
+            "new|close|cap|copy|panic|panicln|print|println|len|make|delete|real|recover|imag|append"
         );
         var builtinConstants = ("nil|true|false|iota");
 
@@ -74,7 +74,9 @@ ace.define("ace/mode/golang_highlight_rules",["require","exports","module","ace/
             "constant.language": builtinConstants,
             "support.function": builtinFunctions,
             "support.type": builtinTypes
-        }, "identifier");
+        }, "");
+        
+        var stringEscapeRe = "\\\\(?:[0-7]{3}|x\\h{2}|u{4}|U\\h{6}|[abfnrtv'\"\\\\])".replace(/\\h/g, "[a-fA-F\\d]");
 
         this.$rules = {
             "start" : [
@@ -84,32 +86,43 @@ ace.define("ace/mode/golang_highlight_rules",["require","exports","module","ace/
                 },
                 DocCommentHighlightRules.getStartRule("doc-start"),
                 {
-                    token : "comment", // multi line comment
+                    token : "comment.start", // multi line comment
                     regex : "\\/\\*",
                     next : "comment"
                 }, {
                     token : "string", // single line
-                    regex : '["](?:(?:\\\\.)|(?:[^"\\\\]))*?["]'
+                    regex : /"(?:[^"\\]|\\.)*?"/
                 }, {
-                    token : "string", // single line
-                    regex : '[`](?:[^`]*)[`]'
-                }, {
-                    token : "string", // multi line string start
-                    merge : true,
-                    regex : '[`](?:[^`]*)$',
+                    token : "string", // raw
+                    regex : '`',
                     next : "bqstring"
                 }, {
                     token : "constant.numeric", // rune
-                    regex : "['](?:(?:\\\\.)|(?:[^'\\\\]))[']"
+                    regex : "'(?:[^\\'\uD800-\uDBFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|" + stringEscapeRe.replace('"', '')  + ")'"
                 }, {
                     token : "constant.numeric", // hex
-                    regex : "0[xX][0-9a-fA-F]+\\b"
+                    regex : "0[xX][0-9a-fA-F]+\\b" 
                 }, {
                     token : "constant.numeric", // float
                     regex : "[+-]?\\d+(?:(?:\\.\\d*)?(?:[eE][+-]?\\d+)?)?\\b"
                 }, {
-                    token : keywordMapper,
-                    regex : "[a-zA-Z_$][a-zA-Z0-9_$]*\\b"
+                    token : ["keyword", "text", "entity.name.function"],
+                    regex : "(func)(\\s+)([a-zA-Z_$][a-zA-Z0-9_$]*)\\b"
+                }, {
+                    token : function(val) {
+                        if (val[val.length - 1] == "(") {
+                            return [{
+                                type: keywordMapper(val.slice(0, -1)) || "support.function",
+                                value: val.slice(0, -1)
+                            }, {
+                                type: "paren.lparen",
+                                value: val.slice(-1)
+                            }];
+                        }
+                        
+                        return keywordMapper(val) || "identifier";
+                    },
+                    regex : "[a-zA-Z_$][a-zA-Z0-9_$]*\\b\\(?"
                 }, {
                     token : "keyword.operator",
                     regex : "!|\\$|%|&|\\*|\\-\\-|\\-|\\+\\+|\\+|~|==|=|!=|<=|>=|<<=|>>=|>>>=|<>|<|>|!|&&|\\|\\||\\?\\:|\\*=|%=|\\+=|\\-=|&=|\\^="
@@ -129,22 +142,20 @@ ace.define("ace/mode/golang_highlight_rules",["require","exports","module","ace/
             ],
             "comment" : [
                 {
-                    token : "comment", // closing comment
-                    regex : ".*?\\*\\/",
+                    token : "comment.end",
+                    regex : "\\*\\/",
                     next : "start"
                 }, {
-                    token : "comment", // comment spanning whole line
-                    regex : ".+"
+                    defaultToken : "comment"
                 }
             ],
             "bqstring" : [
                 {
                     token : "string",
-                    regex : '(?:[^`]*)`',
+                    regex : '`',
                     next : "start"
                 }, {
-                    token : "string",
-                    regex : '.+'
+                    defaultToken : "string"
                 }
             ]
         };
@@ -232,6 +243,19 @@ var initContext = function(editor) {
     };
 };
 
+var getWrapped = function(selection, selected, opening, closing) {
+    var rowDiff = selection.end.row - selection.start.row;
+    return {
+        text: opening + selected + closing,
+        selection: [
+                0,
+                selection.start.column + 1,
+                rowDiff,
+                selection.end.column + (rowDiff ? 0 : 1)
+            ]
+    };
+};
+
 var CstyleBehaviour = function() {
     this.add("braces", "insertion", function(state, action, editor, session, text) {
         var cursor = editor.getCursorPosition();
@@ -241,10 +265,7 @@ var CstyleBehaviour = function() {
             var selection = editor.getSelectionRange();
             var selected = session.doc.getTextRange(selection);
             if (selected !== "" && selected !== "{" && editor.getWrapBehavioursEnabled()) {
-                return {
-                    text: '{' + selected + '}',
-                    selection: false
-                };
+                return getWrapped(selection, selected, '{', '}');
             } else if (CstyleBehaviour.isSaneInsertion(editor, session)) {
                 if (/[\]\}\)]/.test(line[cursor.column]) || editor.inMultiSelectMode) {
                     CstyleBehaviour.recordAutoInsert(editor, session, "}");
@@ -324,10 +345,7 @@ var CstyleBehaviour = function() {
             var selection = editor.getSelectionRange();
             var selected = session.doc.getTextRange(selection);
             if (selected !== "" && editor.getWrapBehavioursEnabled()) {
-                return {
-                    text: '(' + selected + ')',
-                    selection: false
-                };
+                return getWrapped(selection, selected, '(', ')');
             } else if (CstyleBehaviour.isSaneInsertion(editor, session)) {
                 CstyleBehaviour.recordAutoInsert(editor, session, ")");
                 return {
@@ -372,10 +390,7 @@ var CstyleBehaviour = function() {
             var selection = editor.getSelectionRange();
             var selected = session.doc.getTextRange(selection);
             if (selected !== "" && editor.getWrapBehavioursEnabled()) {
-                return {
-                    text: '[' + selected + ']',
-                    selection: false
-                };
+                return getWrapped(selection, selected, '[', ']');
             } else if (CstyleBehaviour.isSaneInsertion(editor, session)) {
                 CstyleBehaviour.recordAutoInsert(editor, session, "]");
                 return {
@@ -421,49 +436,44 @@ var CstyleBehaviour = function() {
             var selection = editor.getSelectionRange();
             var selected = session.doc.getTextRange(selection);
             if (selected !== "" && selected !== "'" && selected != '"' && editor.getWrapBehavioursEnabled()) {
-                return {
-                    text: quote + selected + quote,
-                    selection: false
-                };
-            } else {
+                return getWrapped(selection, selected, quote, quote);
+            } else if (!selected) {
                 var cursor = editor.getCursorPosition();
                 var line = session.doc.getLine(cursor.row);
                 var leftChar = line.substring(cursor.column-1, cursor.column);
-                if (leftChar == '\\') {
+                var rightChar = line.substring(cursor.column, cursor.column + 1);
+                
+                var token = session.getTokenAt(cursor.row, cursor.column);
+                var rightToken = session.getTokenAt(cursor.row, cursor.column + 1);
+                if (leftChar == "\\" && token && /escape/.test(token.type))
                     return null;
+                
+                var stringBefore = token && /string|escape/.test(token.type);
+                var stringAfter = !rightToken || /string|escape/.test(rightToken.type);
+                
+                var pair;
+                if (rightChar == quote) {
+                    pair = stringBefore !== stringAfter;
+                } else {
+                    if (stringBefore && !stringAfter)
+                        return null; // wrap string with different quote
+                    if (stringBefore && stringAfter)
+                        return null; // do not pair quotes inside strings
+                    var wordRe = session.$mode.tokenRe;
+                    wordRe.lastIndex = 0;
+                    var isWordBefore = wordRe.test(leftChar);
+                    wordRe.lastIndex = 0;
+                    var isWordAfter = wordRe.test(leftChar);
+                    if (isWordBefore || isWordAfter)
+                        return null; // before or after alphanumeric
+                    if (rightChar && !/[\s;,.})\]\\]/.test(rightChar))
+                        return null; // there is rightChar and it isn't closing
+                    pair = true;
                 }
-                var tokens = session.getTokens(selection.start.row);
-                var col = 0, token;
-                var quotepos = -1; // Track whether we're inside an open quote.
-
-                for (var x = 0; x < tokens.length; x++) {
-                    token = tokens[x];
-                    if (token.type == "string") {
-                      quotepos = -1;
-                    } else if (quotepos < 0) {
-                      quotepos = token.value.indexOf(quote);
-                    }
-                    if ((token.value.length + col) > selection.start.column) {
-                        break;
-                    }
-                    col += tokens[x].value.length;
-                }
-                if (!token || (quotepos < 0 && token.type !== "comment" && (token.type !== "string" || ((selection.start.column !== token.value.length+col-1) && token.value.lastIndexOf(quote) === token.value.length-1)))) {
-                    if (!CstyleBehaviour.isSaneInsertion(editor, session))
-                        return;
-                    return {
-                        text: quote + quote,
-                        selection: [1,1]
-                    };
-                } else if (token && token.type === "string") {
-                    var rightChar = line.substring(cursor.column, cursor.column + 1);
-                    if (rightChar == quote) {
-                        return {
-                            text: '',
-                            selection: [1, 1]
-                        };
-                    }
-                }
+                return {
+                    text: pair ? quote + quote : "",
+                    selection: [1,1]
+                };
             }
         }
     });
@@ -575,12 +585,35 @@ var FoldMode = exports.FoldMode = function(commentRegex) {
 oop.inherits(FoldMode, BaseFoldMode);
 
 (function() {
-
+    
     this.foldingStartMarker = /(\{|\[)[^\}\]]*$|^\s*(\/\*)/;
     this.foldingStopMarker = /^[^\[\{]*(\}|\])|^[\s\*]*(\*\/)/;
+    this.singleLineBlockCommentRe= /^\s*(\/\*).*\*\/\s*$/;
+    this.tripleStarBlockCommentRe = /^\s*(\/\*\*\*).*\*\/\s*$/;
+    this.startRegionRe = /^\s*(\/\*|\/\/)#?region\b/;
+    this._getFoldWidgetBase = this.getFoldWidget;
+    this.getFoldWidget = function(session, foldStyle, row) {
+        var line = session.getLine(row);
+    
+        if (this.singleLineBlockCommentRe.test(line)) {
+            if (!this.startRegionRe.test(line) && !this.tripleStarBlockCommentRe.test(line))
+                return "";
+        }
+    
+        var fw = this._getFoldWidgetBase(session, foldStyle, row);
+    
+        if (!fw && this.startRegionRe.test(line))
+            return "start"; // lineCommentRegionStart
+    
+        return fw;
+    };
 
     this.getFoldWidgetRange = function(session, foldStyle, row, forceMultiline) {
         var line = session.getLine(row);
+        
+        if (this.startRegionRe.test(line))
+            return this.getCommentRegionBlock(session, line, row);
+        
         var match = line.match(this.foldingStartMarker);
         if (match) {
             var i = match.index;
@@ -645,6 +678,28 @@ oop.inherits(FoldMode, BaseFoldMode);
         
         return new Range(startRow, startColumn, endRow, session.getLine(endRow).length);
     };
+    this.getCommentRegionBlock = function(session, line, row) {
+        var startColumn = line.search(/\s*$/);
+        var maxRow = session.getLength();
+        var startRow = row;
+        
+        var re = /^\s*(?:\/\*|\/\/|--)#?(end)?region\b/;
+        var depth = 1;
+        while (++row < maxRow) {
+            line = session.getLine(row);
+            var m = re.exec(line);
+            if (!m) continue;
+            if (m[1]) depth--;
+            else depth++;
+
+            if (!depth) break;
+        }
+
+        var endRow = row;
+        if (endRow > startRow) {
+            return new Range(startRow, startColumn, endRow, line.length);
+        }
+    };
 
 }).call(FoldMode.prototype);
 
@@ -663,6 +718,7 @@ var Mode = function() {
     this.HighlightRules = GolangHighlightRules;
     this.$outdent = new MatchingBraceOutdent();
     this.foldingRules = new CStyleFoldMode();
+    this.$behaviour = new CstyleBehaviour();
 };
 oop.inherits(Mode, TextMode);
 
