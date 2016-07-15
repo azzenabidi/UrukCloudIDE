@@ -1,5 +1,5 @@
-# DevBox
-DevBox is a free as in freedom cloud IDE
+# UrukCloudIDE
+UrukCloudIDE is a free as in freedom cloud IDE
 
 # Copyright (c) 2015 azzen abidi <azzen.abidi@gmail.com>
 
@@ -14,19 +14,18 @@ DevBox is a free as in freedom cloud IDE
 2. Point your browser to http://yourhost/Install/install.html to begin the   database installation process
 3. enter the credentials to access the database
 4.  Click install
-5. Remove the install.html file from the UrukCloudIDE installation path.
-	6. Congratulation you have successfully setup UrukCloudIDE. Happy coding!
+5. Remove the install.html file from the Devbox installation path.
+	6. Congratulation you have successfully setup Devbox. Happy coding!
 
 # Known Issues
 - unable to send multiple ajax requests
 
-# Features to implement soon
-- deleting files and projects
+
 
 # Trouble:
 
 All efforts have been made to ensure the smooth and correct running of this application.
-If you find that UrukCloudIDE is behaving abnormaly though, there are 3 options :
+If you find that Devbox is behaving abnormaly though, there are 3 options :
 
 1) Turn it off and run away. Not an option I would advise.
 
