@@ -163,15 +163,18 @@ $note= new Notification_Controller();
 
 <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="ace/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
-<script src="ace/snippets/pascal.js" type="text/javascript" charset="utf-8"></script>
 
-<!-- DevBox UI Interactions -->
+<!-- UrukCloudIDE UI Interactions -->
 
 <script>
     // trigger extension
     ace.require("ace/ext/language_tools");
+    var filename=document.getElementById("name");
+    var  n = filename.indexOf(".");
+    var res = filename.substring(n+1);
+    var langage="ruby";
     var editor = ace.edit("editor");
-    editor.session.setMode("ace/mode/java");
+    editor.session.setMode("ace/mode/"+langage);
     editor.setTheme("ace/theme/tomorrow");
     // enable autocompletion and snippets
     editor.setOptions({
