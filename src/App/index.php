@@ -169,10 +169,7 @@ $note= new Notification_Controller();
 <script>
     // trigger extension
     ace.require("ace/ext/language_tools");
-    var filename=document.getElementById("name");
-    var  n = filename.indexOf(".");
-    var res = filename.substring(n+1);
-    var langage="ruby";
+        var langage="java";
     var editor = ace.edit("editor");
     editor.session.setMode("ace/mode/"+langage);
     editor.setTheme("ace/theme/tomorrow");
