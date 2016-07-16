@@ -276,10 +276,10 @@ context.init({preventDoubleContext: false});
 
 
 
-	{text: 'Create',action: function(e, selector) {
+	{text: 'Create Project',action: function(e, selector) {
        $("#dialogfile").dialog({
             autoOpen: true,
-            title: 'Create File',
+            title: 'Create Project',
             height: 200,
   width: 350
 
@@ -288,6 +288,17 @@ context.init({preventDoubleContext: false});
 
      }},
 
+     {text: 'Create File',action: function(e, selector) {
+          $("#dialogfile").dialog({
+               autoOpen: true,
+               title: 'Create File',
+               height: 200,
+     width: 350
+
+               });
+
+
+        }},
 	{text: 'Rename', href: '#'},
 
 	{text: 'Delete', href: '#'},
