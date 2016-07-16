@@ -276,8 +276,7 @@ context.init({preventDoubleContext: false});
 
 
 
-	{text: 'Create',action: function(e, selector) {  $("#nf").click(function (e) {
-    e.preventDefault();
+	{text: 'Create',action: function(e, selector) {
        $("#dialogfile").dialog({
             autoOpen: true,
             title: 'Create File',
