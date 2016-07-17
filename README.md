@@ -1,7 +1,7 @@
 # UrukCloudIDE
 UrukCloudIDE is a free as in freedom cloud IDE
 
-# Copyright (c) 2015 azzen abidi <azzen.abidi@gmail.com>
+# Copyright (c) 2015-2016 azzen abidi <azzen.abidi@gmail.com>
 
 
 # Minimal System Requirements

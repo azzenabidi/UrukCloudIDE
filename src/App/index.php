@@ -100,13 +100,10 @@ display:none;
             <ul class="dropdown-menu">
 
                 <li><a href="../Contact/index.php" target="blank">Contact the app Admin</a></li>
-                <li><a href="../Vendor/owncloud/index.php" target="blank">Access Owncloud</a></li>
 
-                <li><a href="../../devbox/index.php" target="blank">Website</a></li>
+                <li><a href="https://github.com/azzenovic/UrukCloudIDE/issues" target="blank">Github</a></li>
 
-                <li><a href="../../devbox/documentation/index.php" target="blank">Wiki</a></li>
-
-                <li><a href="../../devbox/forums/index.php" target="blank">Report a bug</a></li>
+                <li><a href="https://github.com/azzenovic/UrukCloudIDE/issues" target="blank">Report a bug</a></li>
 
                 <li><a href="#">About</a></li>
 
@@ -163,15 +160,15 @@ $note= new Notification_Controller();
 
 <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="ace/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
-<script src="ace/snippets/pascal.js" type="text/javascript" charset="utf-8"></script>
 
-<!-- DevBox UI Interactions -->
+<!-- UrukCloudIDE UI Interactions -->
 
 <script>
     // trigger extension
     ace.require("ace/ext/language_tools");
+        var langage="java";
     var editor = ace.edit("editor");
-    editor.session.setMode("ace/mode/java");
+    editor.session.setMode("ace/mode/"+langage);
     editor.setTheme("ace/theme/tomorrow");
     // enable autocompletion and snippets
     editor.setOptions({
@@ -276,8 +273,29 @@ context.init({preventDoubleContext: false});
 
 
 
-	{text: 'Create', href: '#'},
+	{text: 'Create Project',action: function(e, selector) {
+       $("#dialogfile").dialog({
+            autoOpen: true,
+            title: 'Create Project',
+            height: 200,
+  width: 350
 
+            });
+
+
+     }},
+
+     {text: 'Create File',action: function(e, selector) {
+          $("#dialogfile").dialog({
+               autoOpen: true,
+               title: 'Create File',
+               height: 200,
+     width: 350
+
+               });
+
+
+        }},
 	{text: 'Rename', href: '#'},
 
 	{text: 'Delete', href: '#'},
