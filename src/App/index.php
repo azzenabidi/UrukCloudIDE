@@ -100,13 +100,10 @@ display:none;
             <ul class="dropdown-menu">
 
                 <li><a href="../Contact/index.php" target="blank">Contact the app Admin</a></li>
-                <li><a href="../Vendor/owncloud/index.php" target="blank">Access Owncloud</a></li>
 
-                <li><a href="../../devbox/index.php" target="blank">Website</a></li>
+                <li><a href="https://github.com/azzenovic/UrukCloudIDE/issues" target="blank">Github</a></li>
 
-                <li><a href="../../devbox/documentation/index.php" target="blank">Wiki</a></li>
-
-                <li><a href="../../devbox/forums/index.php" target="blank">Report a bug</a></li>
+                <li><a href="https://github.com/azzenovic/UrukCloudIDE/issues" target="blank">Report a bug</a></li>
 
                 <li><a href="#">About</a></li>
 
