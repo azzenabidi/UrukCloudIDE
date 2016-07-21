@@ -164,25 +164,33 @@ $note= new Notification_Controller();
 <!-- UrukCloudIDE UI Interactions -->
 
 <script>
-    // trigger extension
-    ace.require("ace/ext/language_tools");
-        var langage="java";
-    var editor = ace.edit("editor");
-    editor.session.setMode("ace/mode/"+langage);
-    editor.setTheme("ace/theme/tomorrow");
-    // enable autocompletion and snippets
-    editor.setOptions({
-        enableBasicAutocompletion: true,
-        enableSnippets: true,
-        enableLiveAutocompletion: true
-    });
+// trigger extension
+ace.require("ace/ext/language_tools");
 
+var editor = ace.edit("editor");
+editor.session.setMode("ace/mode/java");
+editor.setTheme("ace/theme/tomorrow");
+// enable autocompletion and snippets
+editor.setOptions({
+    enableBasicAutocompletion: true,
+    enableSnippets: true,
+    enableLiveAutocompletion: true
+});
+
+var tablang = new Array();
+tablang['java'] = "java";
+tablang['php'] = "php";
+tablang['py'] = "python";
+tablang['rb'] = "ruby";
+tablang['pas'] = "pascal";
+tablang['cpp'] = "cpp";
 
     	$(document).ready( function() {
 
 				$('#fileexplorer').fileTree({ root: '<?php echo __DIR__."/Users/".$_SESSION['login']."/";?>', script: 'triggers/jqueryFileTree.php', folderEvent: 'click', expandSpeed: 750, collapseSpeed: 750, multiFolder: true,loadMessage:'Loading...' }, function(file) {
-					var test =file.slice(25,file.length);
 
+          var n = file.lastIndexOf("/");
+          var test=file.substring(n+1);
 					$.ajax({
   url: 'file.php',
   type: 'GET',
@@ -232,8 +240,20 @@ $("#ss").click(function(e){
         $("#okfile").click(function (e) {
 		e.preventDefault();
 		var test= $("#name").val();
+    var lastblasa=test.lastIndexOf(".");
+    var langtype=test.substring(lastblasa+1);
 		var encoded = encodeURIComponent(test);
 		$("#rr").load("triggers/addfile.php?filename="+encoded);
+
+    //load enabled languages
+
+    var langage="java";
+    for (var index in tablang) {
+    if (index==langtype) {
+        langage=tablang[index];
+        break;
+    }}
+    editor.session.setMode("ace/mode/"+langage);
 		$("#rr").fadeOut(2400);
 	 $("#dialogfile").dialog( "close" );
 
@@ -296,15 +316,37 @@ context.init({preventDoubleContext: false});
 
 
         }},
-	{text: 'Rename', href: '#'},
+	{text: 'Rename',function(e, selector) {
+       $("#dialogfile").dialog({
+            autoOpen: true,
+            title: 'Rename ',
+            height: 200,
+  width: 350
+
+            });
+
+
+     }},
 
 	{text: 'Delete', href: '#'},
 
 
 	]);
 
+	context.attach('#editor', [
 
+{text: 'Copy', href: '#'},
+{text: 'Cut', href: '#'},
+{text: 'Paste', href: '#'},
+
+
+
+
+
+  ]);
 });
+
+
 </script>
 
 
