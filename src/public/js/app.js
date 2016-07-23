@@ -1,8 +1,8 @@
-ace.require("../../App/ace/ext/language_tools");
+ace.require("ace/ext/language_tools");
 
 var editor = ace.edit("editor");
-editor.setTheme("../../App/ace/theme/tomorrow");
-editor.session.setMode("../../App/ace/mode/java");
+editor.setTheme("ace/theme/tomorrow");
+editor.session.setMode("ace/mode/java");
 
 // enable autocompletion and snippets
 editor.setOptions({

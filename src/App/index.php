@@ -158,27 +158,11 @@ $note= new Notification_Controller();
 
 <!-- ACE UrukCloudIDE/src -->
 
-<script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
-<script src="ace/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+<script src="/UrukCloudIDE/src/public/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="/UrukCloudIDE/src/public/js/ace/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
 
 <!-- UrukCloudIDE UI Interactions -->
 <script src="/UrukCloudIDE/src/public/js/app.js"></script>
-<script>
-
-ace.require("ace/ext/language_tools");
-
-var editor = ace.edit("editor");
-editor.setTheme("ace/theme/tomorrow");
-editor.session.setMode("ace/mode/java");
-
-// enable autocompletion and snippets
-editor.setOptions({
-    enableBasicAutocompletion: true,
-    enableSnippets: true,
-    enableLiveAutocompletion: true
-});
-
-</script>
 
 
 
