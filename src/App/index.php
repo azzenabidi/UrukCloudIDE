@@ -1,8 +1,8 @@
 <?php
-session_start();
+/*session_start();
 if (!isset($_SESSION['login'])) {
     header("location: ../Login/index.php");
-}
+}*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -158,196 +158,13 @@ $note= new Notification_Controller();
 
 <!-- ACE UrukCloudIDE/src -->
 
-<script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
-<script src="ace/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+<script src="/UrukCloudIDE/src/public/js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="/UrukCloudIDE/src/public/js/ace/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
 
 <!-- UrukCloudIDE UI Interactions -->
-
-<script>
-// trigger extension
-ace.require("ace/ext/language_tools");
-
-var editor = ace.edit("editor");
-editor.session.setMode("ace/mode/java");
-editor.setTheme("ace/theme/tomorrow");
-// enable autocompletion and snippets
-editor.setOptions({
-    enableBasicAutocompletion: true,
-    enableSnippets: true,
-    enableLiveAutocompletion: true
-});
-
-var tablang = new Array();
-tablang['java'] = "java";
-tablang['php'] = "php";
-tablang['py'] = "python";
-tablang['rb'] = "ruby";
-tablang['pas'] = "pascal";
-tablang['cpp'] = "cpp";
-
-    	$(document).ready( function() {
-
-				$('#fileexplorer').fileTree({ root: '<?php echo __DIR__."/Users/".$_SESSION['login']."/";?>', script: 'triggers/jqueryFileTree.php', folderEvent: 'click', expandSpeed: 750, collapseSpeed: 750, multiFolder: true,loadMessage:'Loading...' }, function(file) {
-
-          var n = file.lastIndexOf("/");
-          var test=file.substring(n+1);
-					$.ajax({
-  url: 'file.php',
-  type: 'GET',
-  data: 'file='+test,
-  success: function(data) {
-	//called when successful
-	UrukCloudIDE/src.setValue(data);
-  },
-  error: function(e) {
-	//called when there is an error
-	//console.log(e.message);
-  }
-});
+<script src="/UrukCloudIDE/src/public/js/app.js"></script>
 
 
-				});
-
-$("#ss").click(function(e){
-	e.preventDefault();
-	var encoded = encodeURIComponent(editor.getValue());
-        $("#rr").load("triggers/savefile.php?data="+encoded);
-        $("#rr").fadeOut(2400);
-    });
- $("#np").click(function (e) {
-			  e.preventDefault();
-           $("#dialog").dialog({
-                autoOpen: true,
-                title: 'Create Project',
-                height: 200,
-      width: 350
-
-                });
-
-        });
-
-       $("#nf").click(function (e) {
-			  e.preventDefault();
-           $("#dialogfile").dialog({
-                autoOpen: true,
-                title: 'Create File',
-                height: 200,
-      width: 350
-
-                });
-
-        });
-        $("#okfile").click(function (e) {
-		e.preventDefault();
-		var test= $("#name").val();
-    var lastblasa=test.lastIndexOf(".");
-    var langtype=test.substring(lastblasa+1);
-		var encoded = encodeURIComponent(test);
-		$("#rr").load("triggers/addfile.php?filename="+encoded);
-
-    //load enabled languages
-
-    var langage="java";
-    for (var index in tablang) {
-    if (index==langtype) {
-        langage=tablang[index];
-        break;
-    }}
-    editor.session.setMode("ace/mode/"+langage);
-		$("#rr").fadeOut(2400);
-	 $("#dialogfile").dialog( "close" );
-
- });
-
-     $("#ok").click(function (e) {
-		e.preventDefault();
-
-		var test= $("#prname").val();
-		var encoded = encodeURIComponent(test);
-		$("#rr").load("triggers/addproject.php?projectname="+encoded);
-		$("#fileexplorer").fileTree({ root: '<?php echo __DIR__."/Users/".$_SESSION['login']."/";?>', script: 'triggers/jqueryFileTree.php' }, function(file) {
-        alert(file);
-
-    });
-		$("#rr").fadeOut(2400);
-    $("#dialog").dialog( "close" );
-
-        });
-
-
-context.init({preventDoubleContext: false});
-
-
-
-	context.settings({compress: true});
-
-
-
-	context.attach('#fileexplorer', [
-
-
-	{text: 'Reload', action: function(e, selector) { $("#fileexplorer").fileTree({ root: '<?php  echo __DIR__."/Users/".$_SESSION['login']."/";?>', script: 'triggers/jqueryFileTree.php' }, function(file) {
-        alert(file);
-
-    }); } },
-
-
-
-	{text: 'Create Project',action: function(e, selector) {
-       $("#dialogfile").dialog({
-            autoOpen: true,
-            title: 'Create Project',
-            height: 200,
-  width: 350
-
-            });
-
-
-     }},
-
-     {text: 'Create File',action: function(e, selector) {
-          $("#dialogfile").dialog({
-               autoOpen: true,
-               title: 'Create File',
-               height: 200,
-     width: 350
-
-               });
-
-
-        }},
-	{text: 'Rename',function(e, selector) {
-       $("#dialogfile").dialog({
-            autoOpen: true,
-            title: 'Rename ',
-            height: 200,
-  width: 350
-
-            });
-
-
-     }},
-
-	{text: 'Delete', href: '#'},
-
-
-	]);
-
-	context.attach('#editor', [
-
-{text: 'Copy', href: '#'},
-{text: 'Cut', href: '#'},
-{text: 'Paste', href: '#'},
-
-
-
-
-
-  ]);
-});
-
-
-</script>
 
 
 </body>
