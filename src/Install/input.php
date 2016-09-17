@@ -1,4 +1,12 @@
 <?php
+/**
+ * Starts With function from stackoverflow http://stackoverflow.com/questions/834303/startswith-and-endswith-functions-in-php 
+ **/
+function startsWith($haystack, $needle) {
+    // search backwards starting from haystack length characters from the end
+    return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== false;
+}
+
 function run_sql_file($location)
 {
     //load file
@@ -45,7 +53,7 @@ $conn = new mysqli($database_server, $username, $password, $database_name);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-run_sql_file("application.sql");
-rp("config/dbConn.class.php", $username, $password, $database_server, $database_name);
-echo "installing successfully";
+run_sql_file("../application.sql");
+rp("../Config/dbConn.class.php", $username, $password, $database_server, $database_name);
+echo "Install Successfull!";
 ?> 

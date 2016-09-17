@@ -16,7 +16,7 @@ private function __construct()
 {
     try {
         // assign PDO object to db variable
-self::$db = new PDO('mysql:host=localhost;dbname=devbox', 'root', 'linux');
+self::$db = new PDO('mysql:host=localhost;dbname=devbox', 'user', 'user');
         self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {
         //Output error - would normally log this to error file rather than output to user.
