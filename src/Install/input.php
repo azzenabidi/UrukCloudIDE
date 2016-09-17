@@ -38,10 +38,11 @@ function run_sql_file($location)
 }
 function rp($file, $username, $password, $server, $database_name)
 {
-    file_put_contents($file, str_replace("root", $username, file_get_contents($file)));
-    file_put_contents($file, str_replace("linux", $password, file_get_contents($file)));
+    /* [TODO] : Need to add preg_match() or something more reliable ! */
+    file_put_contents($file, str_replace("userdb", $username, file_get_contents($file)));
+    file_put_contents($file, str_replace("userpsw", $password, file_get_contents($file)));
     file_put_contents($file, str_replace("localhost", $server, file_get_contents($file)));
-    file_put_contents($file, str_replace("application", $database_name, file_get_contents($file)));
+    file_put_contents($file, str_replace("uruk", $database_name, file_get_contents($file)));
 }
 $username = $_POST["username"];
 $password = $_POST["password"];
@@ -55,5 +56,6 @@ if ($conn->connect_error) {
 }
 run_sql_file("../application.sql");
 rp("../Config/dbConn.class.php", $username, $password, $database_server, $database_name);
-echo "Install Successfull!";
+rename("../Install","../Install-tmp"); // Auto-rename the Install folder
+echo "Install Successfull! Please head back to the home directory.";
 ?> 

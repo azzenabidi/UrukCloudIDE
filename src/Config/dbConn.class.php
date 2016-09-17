@@ -1,10 +1,13 @@
 <?php
 
+
 //db connection class using singleton pattern
 namespace UrukCloudIDE\Config;
 
 use PDO;
 
+
+    
 class dbConn
 {
 
@@ -14,13 +17,17 @@ protected static $db;
 //private construct - class cannot be instatiated externally.
 private function __construct()
 {
+    // Database credinals variables
+    $dbUser = 'userdb';
+    $dbPass = 'userpsw';
+    $dbHSN = 'mysql:host=localhost;dbname=uruk';
     try {
         // assign PDO object to db variable
-self::$db = new PDO('mysql:host=localhost;dbname=devbox', 'user', 'user');
+        self::$db = new PDO($dbHSN, $dbUser, $dbPass);
         self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {
         //Output error - would normally log this to error file rather than output to user.
-echo "Connection Error: " . $e->getMessage();
+        echo "Connection Error: " . $e->getMessage();
     }
 }
 
