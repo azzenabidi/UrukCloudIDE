@@ -18,8 +18,8 @@ protected static $db;
 private function __construct()
 {
     // Database credinals variables
-    $dbUser = 'userdb';
-    $dbPass = 'userpsw';
+    $dbUser = 'user';
+    $dbPass = 'user';
     $dbHSN = 'mysql:host=localhost;dbname=uruk';
     try {
         // assign PDO object to db variable

@@ -41,7 +41,7 @@ $this->admin= new Admin();
                 $_SESSION["admin_password"] = $password;
                 header('location:../Adm/index.php');
             } else {
-                echo "username or password is invalid!";
+                echo "The username or password are invalid!";
             }
         } else {
             echo "All fields are required";
