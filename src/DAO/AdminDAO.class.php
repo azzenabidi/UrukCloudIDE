@@ -17,7 +17,7 @@ class AdminDAO
 
         public function authentificatedao($login, $password)
         {
-            $data=$this->dao->prepare("select * from admins where admin_login= :username and admin_password= :pwd");
+            $data=$this->dao->prepare("select * from admins where 	admin_login= :username and admin_password= :pwd");
             $data->bindParam(':username', $login);
             $data->bindParam(':pwd', $password);
             $data->execute();
