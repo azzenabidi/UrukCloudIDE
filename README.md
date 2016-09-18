@@ -18,6 +18,12 @@ UrukCloudIDE is a free as in freedom cloud IDE
 5. Remove Install-tmp and head back to the root URL
 6. Congratulation you have successfully setup UrukCloudIDE. Happy coding!
 
+# Login
+UrukCloudIDE supports Administrators and regular Users who can use the IDE. To connect as an administrator, use those credinals :
+User : admin
+Password : root
+Once connected, you can add users and change your admin password.
+
 # Known Issues
 - Unable to send multiple ajax requests
 
