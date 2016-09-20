@@ -5,8 +5,9 @@ UrukCloudIDE is a free as in freedom cloud IDE
 
 
 # Minimal System Requirements
-- a unix like os
-- LAMP stack		
+- PHP 5.6 or above.
+- A unix like os
+- LAMP Stack	
 - Shellinbox
 
 # Installation
@@ -14,13 +15,20 @@ UrukCloudIDE is a free as in freedom cloud IDE
 2. Point your browser to http://yourhost/Install/install.html to begin the   database installation process
 3. enter the credentials to access the database
 4.  Click install
-5. Remove the install.html file from the UrukCloudIDE installation path.
-	6. Congratulation you have successfully setup UrukCloudIDE. Happy coding!
+5. Remove Install-tmp and head back to the root URL
+6. Congratulation you have successfully setup UrukCloudIDE. Happy coding!
+
+# Login
+UrukCloudIDE supports Administrators and regular Users who can use the IDE. To connect as an administrator, use those credinals :
+User : admin
+Password : root
+Once connected, you can add users and change your admin password.
 
 # Known Issues
-- unable to send multiple ajax requests
+- Unable to send multiple ajax requests
 
-
+# TODO
+- Improve the install script
 
 # Trouble:
 

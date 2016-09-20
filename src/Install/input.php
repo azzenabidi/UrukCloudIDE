@@ -1,4 +1,12 @@
 <?php
+/**
+ * Starts With function from stackoverflow http://stackoverflow.com/questions/834303/startswith-and-endswith-functions-in-php 
+ **/
+function startsWith($haystack, $needle) {
+    // search backwards starting from haystack length characters from the end
+    return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== false;
+}
+
 function run_sql_file($location)
 {
     //load file
@@ -30,10 +38,11 @@ function run_sql_file($location)
 }
 function rp($file, $username, $password, $server, $database_name)
 {
-    file_put_contents($file, str_replace("root", $username, file_get_contents($file)));
-    file_put_contents($file, str_replace("linux", $password, file_get_contents($file)));
+    /* [TODO] : Need to add preg_match() or something more reliable ! */
+    file_put_contents($file, str_replace("userdb", $username, file_get_contents($file)));
+    file_put_contents($file, str_replace("userpsw", $password, file_get_contents($file)));
     file_put_contents($file, str_replace("localhost", $server, file_get_contents($file)));
-    file_put_contents($file, str_replace("application", $database_name, file_get_contents($file)));
+    file_put_contents($file, str_replace("uruk", $database_name, file_get_contents($file)));
 }
 $username = $_POST["username"];
 $password = $_POST["password"];
@@ -45,7 +54,8 @@ $conn = new mysqli($database_server, $username, $password, $database_name);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-run_sql_file("application.sql");
-rp("config/dbConn.class.php", $username, $password, $database_server, $database_name);
-echo "installing successfully";
+run_sql_file("../application.sql");
+rp("../Config/dbConn.class.php", $username, $password, $database_server, $database_name);
+rename("../Install","../Install-tmp"); // Auto-rename the Install folder
+echo "Install Successfull! Please head back to the home directory.";
 ?> 
