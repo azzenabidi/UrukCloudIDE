@@ -64,7 +64,7 @@ if (isset($_GET['login_attempt'])) {
 	</footer>
 </form>
 <footer id="main" class="text-muted">
- <p>Proudly powered by <a href="https://urukproject.org/en.html" target="_blank">Uruk Project</a>
+ <p>Proudly powered by <a href="https://urukproject.org" target="_blank">Uruk Project</a>
 </p></footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
