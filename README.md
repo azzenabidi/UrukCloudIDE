@@ -7,9 +7,9 @@ UrukCloudIDE is a free as in freedom cloud IDE
 # Minimal System Requirements
 - PHP 5.6 or above.
 - A unix like os
-- LAMP Stack	
-- Shellinbox
-
+- Web Server (like apache or nginx )
+- database server (like mysql server)
+- Shellinbox (Optional )
 # Installation
 1. Extract the tarball into a location readable by your web server
 2. Point your browser to http://yourhost/Install/install.html to begin the   database installation process
