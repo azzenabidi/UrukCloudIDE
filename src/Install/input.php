@@ -6,36 +6,7 @@ function startsWith($haystack, $needle) {
     // search backwards starting from haystack length characters from the end
     return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== false;
 }
-
-function run_sql_file($location)
-{
-    //load file
-    $commands = file_get_contents($location);
-    //delete comments
-    $lines = explode("\n", $commands);
-    $commands = '';
-    foreach ($lines as $line) {
-        $line = trim($line);
-        if ($line & !startsWith($line, '--')) {
-            $commands .= $line . "\n";
-        }
-    }
-    //convert to array
-    $commands = explode(";", $commands);
-    //run commands
-    $total = $success = 0;
-    foreach ($commands as $command) {
-        if (trim($command)) {
-            $success += (@mysql_query($command)==false ? 0 : 1);
-            $total += 1;
-        }
-    }
-    //return number of successful queries and total number of queries found
-    return array(
-        "success" => $success,
-        "total" => $total
-    );
-}
+ 
 function rp($file, $username, $password, $server, $database_name)
 {
     /* [TODO] : Need to add preg_match() or something more reliable ! */
@@ -44,18 +15,37 @@ function rp($file, $username, $password, $server, $database_name)
     file_put_contents($file, str_replace("localhost", $server, file_get_contents($file)));
     file_put_contents($file, str_replace("uruk", $database_name, file_get_contents($file)));
 }
+$filename = "../application.sql";
 $username = $_POST["username"];
 $password = $_POST["password"];
 $database_server = $_POST["server"];
 $database_name = $_POST["name"];
-$conn = new mysqli($database_server, $username, $password, $database_name);
+mysql_connect($database_server, $username, $password) or die('Error connecting to MySQL server: ' . mysql_error());
+// Select database
+mysql_select_db($database_name) or die('Error selecting MySQL database: ' . mysql_error());
+$templine = '';
+// Read in entire file
+$lines = file($filename);
+// Loop through each line
+foreach ($lines as $line)
+{
+// Skip it if it's a comment
+if (substr($line, 0, 2) == '--' || $line == '')
+    continue;
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Add this line to the current segment
+$templine .= $line;
+// If it has a semicolon at the end, it's the end of the query
+if (substr(trim($line), -1, 1) == ';')
+{
+    // Perform the query
+    mysql_query($templine) or print('Error performing query \'<strong>' . $templine . '\': ' . mysql_error() . '<br /><br />');
+    // Reset temp variable to empty
+    $templine = '';
 }
-run_sql_file("../application.sql");
+}
+
 rp("../Config/dbConn.class.php", $username, $password, $database_server, $database_name);
 rename("../Install","../Install-tmp"); // Auto-rename the Install folder
 echo "Install Successfull! Please head back to the home directory.";
-?> 
+?>
