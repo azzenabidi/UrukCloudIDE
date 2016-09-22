@@ -10,6 +10,7 @@ UrukCloudIDE is a free as in freedom cloud IDE
 - Web Server (like apache or nginx )
 - database server (like mysql server)
 - Shellinbox (Optional )
+
 # Installation
 1. Extract the tarball into a location readable by your web server
 2. Point your browser to http://yourhost/Install/install.html to begin the   database installation process
@@ -20,15 +21,13 @@ UrukCloudIDE is a free as in freedom cloud IDE
 
 # Login
 UrukCloudIDE supports Administrators and regular Users who can use the IDE. To connect as an administrator, use those credinals :
-User : admin
-Password : root
+username : azzenovic
+ password : test
+
 Once connected, you can add users and change your admin password.
 
 # Known Issues
 - Unable to send multiple ajax requests
-
-# TODO
-- Improve the install script
 
 # Trouble:
 
