@@ -31,45 +31,14 @@ editor.setOptions({
         });}} ,
 
 
-
-        {text: 'Create Project',action: function(e, selector) {
-          $("#dialogfile").dialog({
-            autoOpen: true,
-            title: 'Create Project',
-            height: 200,
-            width: 350
-
-          });
+        {text: 'Rename', function(e, selector) {
+        alert("Rename test alert");
+      }},
 
 
-        }},
-
-        {text: 'Create File',action: function(e, selector) {
-          $("#dialogfile").dialog({
-            autoOpen: true,
-            title: 'Create File',
-            height: 200,
-            width: 350
-
-          });
-
-
-        }},
-        {text: 'Rename',function(e, selector) {
-          $("#dialogfile").dialog({
-            autoOpen: true,
-            title: 'Rename ',
-            height: 200,
-            width: 350
-
-          });
-
-
-        }},
-
-        {text: 'Delete', href: '#'},
-
-
+        {text: 'Delete', function(e, selector) {
+        alert("delete test alert");
+        }}
       ]);
 
       context.attach('#editor', [

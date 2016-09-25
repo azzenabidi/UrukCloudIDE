@@ -40,15 +40,89 @@ display:none;
 </style>
 </head>
 <body>
-<div id="dialog" title="Create Project">
-	<label>Project Name</label>
-              <input type="text" id="prname" size="20" name="name"  required /><br><br><button id="ok">OK</button>
-            </div>
-<div id="dialogfile" title="Create File">
-	<label>File Name</label>
-              <input type="text" id="name" size="20" name="filename"  required /><br><br><button id="okfile">OK</button>
-            </div>
- <div id="term"></div>
+  <!-- Modal -->
+  <div class="modal fade" id="NewProject" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="NewFile" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="Rename" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="ConfirmDelete" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+         <div id="term"></div>
 <div id="rr"></div>
     <ul class="nav nav-pills">
 
@@ -60,8 +134,8 @@ display:none;
 
             <ul class="dropdown-menu">
 
-				<li><a href="#" id="np">New Project</a></li>
-                <li><a href="#" id="nf">New File</a></li>
+				<li><a href="#"  data-toggle="modal" data-target="#NewProject">New Project</a></li>
+              <li><a href="#"  data-toggle="modal" data-target="#NewFile">New File</a></li>
 
                 <li><a href="#" id="ss">Save</a></li>
                 <li><a href="https://localhost:4200/" id="shell" target="blank">Execute</a></li>
@@ -162,8 +236,8 @@ $note= new Notification_Controller();
 <script src="/UrukCloudIDE/src/public/js/ace/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
 
 <!-- UrukCloudIDE UI Interactions -->
-<script src="/UrukCloudIDE/src/public/js/app.js"></script>
 
+	<script src="/UrukCloudIDE/src/public/js/app.js"></script>
 
 
 

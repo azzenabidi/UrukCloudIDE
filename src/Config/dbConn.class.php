@@ -7,7 +7,7 @@ namespace UrukCloudIDE\Config;
 use PDO;
 
 
-    
+
 class dbConn
 {
 
@@ -18,9 +18,9 @@ protected static $db;
 private function __construct()
 {
     // Database credinals variables
-    $dbUser = 'userdb';
-    $dbPass = 'userpsw';
-    $dbHSN = 'mysql:host=localhost;dbname=uruk';
+    $dbUser = 'root';
+    $dbPass = 'linux';
+    $dbHSN = 'mysql:host=localhost;dbname=urukcloudide';
     try {
         // assign PDO object to db variable
         self::$db = new PDO($dbHSN, $dbUser, $dbPass);
