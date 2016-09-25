@@ -4,3 +4,5 @@ php:
   - '7.0'
   - hhvm
   - nightly
+env:
+- DB=mysql
