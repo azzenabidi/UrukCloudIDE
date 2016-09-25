@@ -40,6 +40,7 @@ display:none;
 </style>
 </head>
 <body>
+  <!-- Popup Windows -->
   <!-- Modal -->
   <div class="modal fade" id="NewProject" role="dialog">
     <div class="modal-dialog">
@@ -48,13 +49,13 @@ display:none;
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">Create Project</h4>
         </div>
         <div class="modal-body">
-          <p>Some text in the modal.</p>
+        <input type="text" class="form-control" name="projectname">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Create</button>
         </div>
       </div>
 
@@ -69,13 +70,13 @@ display:none;
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">Create File</h4>
         </div>
         <div class="modal-body">
-          <p>Some text in the modal.</p>
+        <input type="text" class="form-control" name="filename">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Create</button>
         </div>
       </div>
 
@@ -90,13 +91,13 @@ display:none;
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">Rename Entity</h4>
         </div>
         <div class="modal-body">
-          <p>Some text in the modal.</p>
+            <input type="text" class="form-control" name="rename-entity">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Rename</button>
         </div>
       </div>
 
@@ -110,18 +111,19 @@ display:none;
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">Are you sure?</h4>
         </div>
         <div class="modal-body">
-          <p>Some text in the modal.</p>
+        <input type="text" class="form-control" name="confirm-delete">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Delete</button>
         </div>
       </div>
 
     </div>
   </div>
+  <!-- Popup Windows -->
          <div id="term"></div>
 <div id="rr"></div>
     <ul class="nav nav-pills">
