@@ -267,17 +267,25 @@ if (isset($_GET['id'])) {
         </script>
 
 <script>
-$(document).on('submit', 'form', function(e) {
-var note=$("textarea").val();
-var id=$("#noteid").val();
-var encodednote = encodeURIComponent(note);
-var encodedid = encodeURIComponent(id);
-   $("#div1").load("triggers/modify_notification.php?note="+encodednote+"&id="+encodedid);
-	$("#div1").fadeOut(2400);
+
+$(document).ready(function() {
+  $("form").submit(function(e){
     e.preventDefault();
+    $.ajax({
+      url : "triggers/modify_notification.php",
+      method : "GET",
+      data : {
 
-
+        note : $("textarea").val(),
+        id   : $("#noteid").val()
+      },
+      success : function(data) {
+        $("#div1").html(data).show();
+      }
+    });
+  });
 });
+
     </script>
 </body>
 
