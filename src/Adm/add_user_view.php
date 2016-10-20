@@ -264,7 +264,7 @@ $(document).ready(function() {
         pwd : $("#pwd").val()
       },
       success : function(data) {
-        $("#div1").html(data).show();
+        $("#div1").html(data).fadeOut(2400);
       }
     });
   });

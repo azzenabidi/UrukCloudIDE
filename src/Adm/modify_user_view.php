@@ -274,23 +274,31 @@ while($data=$result->fetch())
 
         });
         </script>
-<script>
-$(document).on('submit', 'form', function(e) {
-var username=$("#username").val();
-var userid=$("#userid").val();
-var login=$("#login").val();
-var pwd=$("#pwd").val();
-var oldlogin=$("#oldlogin").val();
-encodedusername = encodeURIComponent(username);
-encodedlogin = encodeURIComponent(login);
-encodedpwd = encodeURIComponent(pwd);
-encodeduserid = encodeURIComponent(userid);
-encodedoldlogin = encodeURIComponent(oldlogin);
-   $("#div1").load("triggers/modify_user.php?username="+encodedusername+"&login="+encodedlogin+"&oldlogin="+encodedoldlogin+"&pwd="+encodedpwd+"&userid="+encodeduserid);
-	$("#div1").fadeOut(2400);
-    e.preventDefault();
-});
-    </script>
+
+    <script>
+
+    $(document).ready(function() {
+      $("form").submit(function(e){
+        e.preventDefault();
+        $.ajax({
+          url : "triggers/modify_user.php",
+          method : "GET",
+          data : {
+
+            username : $("#username").val(),
+            userid   : $("#userid").val(),
+            login : $("#login").val(),
+            pwd   : $("#pwd").val(),
+            oldlogin   : $("#oldlogin").val()
+          },
+          success : function(data) {
+            $("#div1").html(data).fadeOut(2400);
+          }
+        });
+      });
+    });
+
+        </script>
 
 </body>
 

@@ -180,12 +180,15 @@ margin-left:220px;
                                     <tbody>
                                       <?php
                                       while ($data=$result->fetch()) {
-                                          echo '<tr class="odd gradeC" id="line"'.$data['notification_id'].'>';
+                                          echo '<tr class="odd gradeC" id="line'.$data['notification_id'].'">';
                                           echo"<td>".$data['notification_id']."</td>";
                                           echo"<td>".$data['notification_text']."</td>";
                                           echo"<td>".$data['notification_time']."</td>"; ?>
-											<td><a href="modify_notification_view.php?id=<?php echo $data['notification_id']; ?>" >Modify</a><a  class="delete" href="#" id="del">Delete</a></td>
-											<input type="hidden" id="delnote" value="<?php echo $data['notification_id']; ?>"/>
+											<td>
+                        <a href="modify_notification_view.php?id=<?php echo $data['notification_id']; ?>"
+                           >Modify</a>
+                        <a  class="delete" href="#" data-id="<?php echo $data['notification_id']; ?>">Delete</a></td>
+
 											<?php
                                       echo "</tr>";
                                       }
@@ -214,8 +217,9 @@ margin-left:220px;
     <script>
 
 $(document).ready(function() {
-  $("#del").click(function(e){
+  $(".delete").click(function(e){
     e.preventDefault();
+    var x=$(this).data("id");
 
     $.ajax({
       url : "triggers/delete_notification.php",
@@ -223,17 +227,24 @@ $(document).ready(function() {
       datatype: "JSON",
       data : {
 
-        id : $("#delnote").val()
+        id : $(this).data("id")
       },
       success : function(data) {
 
 
+            $("#line"+x ).remove();
+
+            $("#div1").html(data).fadeOut(2400);
 
 
-          $(this).remove('tr');
-          $("#div1").html(data).show();
+
+
+
+
+
 }
 });
+
 });
 });
 

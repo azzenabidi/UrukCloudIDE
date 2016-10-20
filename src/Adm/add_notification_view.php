@@ -242,7 +242,7 @@ $(document).ready(function() {
         note : $("textarea").val()
       },
       success : function(data) {
-        $("#div1").html(data).show();
+        $("#div1").html(data).fadeOut(2400);
       }
     });
   });
