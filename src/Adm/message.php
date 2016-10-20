@@ -146,9 +146,7 @@ session_start();
                 <div class="row">
                     <div class="col-lg-12">
 						<?php
-            require_once(__DIR__.'/../../vendor/autoload.php');
-            use UrukCloudIDE\Controller\User_Controller;
-            use UrukCloudIDE\Controller\Message_Controller;
+            
 						if(isset($_GET['id']))
 						{
                               $msg= new Message_Controller();
