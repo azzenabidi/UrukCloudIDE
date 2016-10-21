@@ -231,14 +231,21 @@ margin-left:220px;
 
 <script>
 
-$(document).on('submit', 'form', function(e) {
-var note=$("textarea").val();
-var encoded = encodeURIComponent(note);
-   $("#div1").load("triggers/add_notification.php?note="+encoded);
-	$("#div1").fadeOut(2400);
+$(document).ready(function() {
+  $("form").submit(function(e){
     e.preventDefault();
+    $.ajax({
+      url : "triggers/add_notification.php",
+      method : "GET",
+      data : {
 
-
+        note : $("textarea").val()
+      },
+      success : function(data) {
+        $("#div1").html(data).fadeOut(2400);
+      }
+    });
+  });
 });
     </script>
 </body>

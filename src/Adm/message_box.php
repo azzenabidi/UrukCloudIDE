@@ -167,12 +167,7 @@ float:right;
                                     <tbody>
                                       <?php
 
-                                      require_once(__DIR__.'/../../../vendor/autoload.php');
-                                      use UrukCloudIDE\Controller\User_Controller;
-                                      use UrukCloudIDE\Controller\Message_Controller;
-                                      $user= new User_Controller();
-                                      $msg= new Message_Controller();
-
+                                      
                                       $result=$msg->index();
                                       while ($data=$result->fetch())
                                       {

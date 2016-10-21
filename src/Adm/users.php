@@ -186,14 +186,15 @@ margin-left:220px;
 
 
                                       while ($data=$result->fetch()) {
-                                          echo '<tr class="odd gradeC">';
+                                        echo '<tr class="odd gradeC" id="line'.$data['user_login'].'">';
                                           echo"<td>".$data['user_id']."</td>";
                                           echo"<td>".$data['user_name']."</td>";
                                           echo"<td>".$data['user_login']."</td>";
                                           echo"<td>".$data['user_password']."</td>";
                                           echo"<td>".$data['status']."</td>"; ?>
-											<td><a href="modify_user_view.php?id=<?php echo $data['user_id']; ?>" >Modify</a> <a href="#" id="del">Delete</a></td>
-											<input type="hidden" id="deluser" value="<?php echo $data['user_login']; ?>"/>
+											<td><a href="modify_user_view.php?id=<?php echo $data['user_id']; ?>" >Modify</a>
+                          <a  class="delete" href="#" data-id="<?php echo $data['user_login']; ?>">Delete</a></td>
+
 											<?php
                                       echo "</tr>";
                                       }
@@ -220,16 +221,40 @@ margin-left:220px;
     <!-- Custom Theme JavaScript -->
     <script src="js/sb-admin-2.js"></script>
     <script>
-$(document).ready(function(){
-    $("#del").click(function(){
-		var row = $(this).parents('tr:first');
-		user=$("#deluser").val()
-        $("#div1").load("triggers/delete_user.php?login="+user);
-        $("#div1").fadeOut(2400);
-        $(row).remove();
-    });
-});
-</script>
+
+  $(document).ready(function() {
+  $(".delete").click(function(e){
+    e.preventDefault();
+    var x=$(this).data("id");
+
+    $.ajax({
+      url : "triggers/delete_user.php",
+      method : "GET",
+      datatype: "JSON",
+      data : {
+
+        login : $(this).data("id")
+      },
+      success : function(data) {
+
+
+            $("#line"+x ).remove();
+
+            $("#div1").html(data).fadeOut(2400);
+
+
+
+
+
+
+
+  }
+  });
+
+  });
+  });
+
+  </script>
 
 </body>
 

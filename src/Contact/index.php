@@ -101,8 +101,7 @@ margin-left:220px;
          <form method="post" action="#" id="msgform">
 			<div class="form-group">
 
-                                            <input type="hidden" class="form-control" placeholder="" name="userid" id="userid" value="<?php echo $data['user_id'];
-} ?>">
+                                            <input type="hidden" class="form-control" placeholder="" name="userid" id="userid" value="<?php echo $data['user_id'];} ?>">
                                         </div>
              <div class="form-group">
                                             <label>Write Down Your Message</label>
@@ -160,20 +159,27 @@ margin-left:220px;
         });
         </script>
 
-<script>
-$(document).on('submit', 'form', function(e) {
 
-var note=$("textarea").val();
-var id=$("#userid").val();
-encodednote = encodeURIComponent(note);
-encodedid = encodeURIComponent(id);
-   $("#div1").load("sendmsg.php?note="+encodednote+"&id="+encodedid);
-	$("#div1").fadeOut(2400);
-    e.preventDefault();
+    <script>
 
+    $(document).ready(function() {
+      $("form").submit(function(e){
+        e.preventDefault();
+        $.ajax({
+          url : "sendmsg.php",
+          method : "GET",
+          data : {
+            id   : $("#userid").val(),
+            note : $("textarea").val()
 
-});
-    </script>
+          },
+          success : function(data) {
+            $("#div1").html(data).fadeOut(2400);
+          }
+        });
+      });
+    });
+        </script>
 </body>
 
 </html>

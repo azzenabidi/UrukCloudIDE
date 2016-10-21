@@ -180,12 +180,15 @@ margin-left:220px;
                                     <tbody>
                                       <?php
                                       while ($data=$result->fetch()) {
-                                          echo '<tr class="odd gradeC">';
+                                          echo '<tr class="odd gradeC" id="line'.$data['notification_id'].'">';
                                           echo"<td>".$data['notification_id']."</td>";
                                           echo"<td>".$data['notification_text']."</td>";
                                           echo"<td>".$data['notification_time']."</td>"; ?>
-											<td><a href="modify_notification_view.php?id=<?php echo $data['notification_id']; ?>" >Modify</a><a href="#" id="del">Delete</a></td>
-											<input type="hidden" id="delnote" value="<?php echo $data['notification_id']; ?>"/>
+											<td>
+                        <a href="modify_notification_view.php?id=<?php echo $data['notification_id']; ?>"
+                           >Modify</a>
+                        <a  class="delete" href="#" data-id="<?php echo $data['notification_id']; ?>">Delete</a></td>
+
 											<?php
                                       echo "</tr>";
                                       }
@@ -209,18 +212,42 @@ margin-left:220px;
     <!-- Metis Menu Plugin JavaScript -->
     <script src="js/plugins/metisMenu/metisMenu.min.js"></script>
 
-    <!-- Custom Theme JavaScript -->
+    <!-- Custom Theme JavaScript -->var parent = $(this).parent();
     <script src="js/sb-admin-2.js"></script>
-     <script>
-$(document).ready(function(){
-    $("#del").click(function(){
-		var row = $(this).parents('tr:first');
-		note=$("#delnote").val()
-        $("#div1").load("triggers/delete_notification.php?id="+note);
-        $("#div1").fadeOut(2400);
-        $(row).remove();
-    });
+    <script>
+
+$(document).ready(function() {
+  $(".delete").click(function(e){
+    e.preventDefault();
+    var x=$(this).data("id");
+
+    $.ajax({
+      url : "triggers/delete_notification.php",
+      method : "GET",
+      datatype: "JSON",
+      data : {
+
+        id : $(this).data("id")
+      },
+      success : function(data) {
+
+
+            $("#line"+x ).remove();
+
+            $("#div1").html(data).fadeOut(2400);
+
+
+
+
+
+
+
+}
 });
+
+});
+});
+
 </script>
 
 </body>

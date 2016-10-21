@@ -252,18 +252,22 @@ margin-left:220px;
         </script>
 
 <script>
-$(document).on('submit', 'form', function(e) {
-var username=$("#username").val();
-var login=$("#login").val();
-var pwd=$("#pwd").val();
-encodedusername = encodeURIComponent(username);
-encodedlogin = encodeURIComponent(login);
-encodedpwd = encodeURIComponent(pwd);
-   $("#div1").load("triggers/add_user.php?username="+encodedusername+"&login="+encodedlogin+"&pwd="+encodedpwd);
-	$("#div1").fadeOut(2400);
+$(document).ready(function() {
+  $("form").submit(function(e){
     e.preventDefault();
-
-
+    $.ajax({
+      url : "triggers/add_user.php",
+      method : "GET",
+      data : {
+        username : $("#username").val(),
+        login : $("#login").val(),
+        pwd : $("#pwd").val()
+      },
+      success : function(data) {
+        $("#div1").html(data).fadeOut(2400);
+      }
+    });
+  });
 });
     </script>
 </body>
