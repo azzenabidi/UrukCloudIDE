@@ -1,9 +1,3 @@
-<?php
-/*session_start();
-if (!isset($_SESSION['login'])) {
-    header("location: ../Login/index.php");
-}*/
-?>
 <!DOCTYPE html>
 <?php
 session_start();
