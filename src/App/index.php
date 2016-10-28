@@ -48,11 +48,14 @@ display:none;
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
+
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Create Project</h4>
         </div>
         <div class="modal-body">
+          <form id="frm">
         <input type="text" class="form-control" name="projectname">
+      </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Create</button>
@@ -240,6 +243,31 @@ $note= new Notification_Controller();
 <!-- UrukCloudIDE UI Interactions -->
 
 	<script src="/UrukCloudIDE/src/public/js/app.js"></script>
+  <script>
+  $(document).ready(function() {
+    $('#frm').validate({
+                  rules:{
+
+
+                      "projectname":{
+                          required:true,
+                          maxlength:100
+                      }
+                      },
+
+                  messages:{
+
+
+                      "projectname":{
+                          required:"Please Type a project name "
+
+                      }
+                      }
+
+
+  });
+
+  </script>
 
 
 
