@@ -25,6 +25,7 @@ class User_Controller
                     $_SESSION['user_id']=$data['user_id'];
                     $_SESSION["login"] = $login;
                     $_SESSION["password"] = $password;
+                    $_SESSION['loggedin']=true;
                     header('location:../App/index.php');
                 }
             } else {
@@ -37,7 +38,9 @@ class User_Controller
     public function user_disconnect_action($login)
     {
         $this->user->setlogin($login);
+        $_SESSION['loggedin']=false;
         $result=$this->user->disconnect();
+
         if ($result==1) {
             header("location: ../../Login/index.php");
         }
