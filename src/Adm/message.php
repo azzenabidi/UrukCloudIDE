@@ -1,5 +1,11 @@
 <?php
 session_start();
+if($_SESSION['admin_loggedin']==false)
+{
+  header("location: ../Login/index.php");
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -146,7 +152,7 @@ session_start();
                 <div class="row">
                     <div class="col-lg-12">
 						<?php
-            
+
 						if(isset($_GET['id']))
 						{
                               $msg= new Message_Controller();

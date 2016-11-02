@@ -1,10 +1,13 @@
-<?php
-/*session_start();
-if (!isset($_SESSION['login'])) {
-    header("location: ../Login/index.php");
-}*/
-?>
 <!DOCTYPE html>
+<?php
+session_start();
+if($_SESSION['loggedin']==false)
+{
+  header("location: ../Login/index.php");
+}
+
+
+?>
 <html lang="en">
 <head>
   <meta charset="UTF-8">

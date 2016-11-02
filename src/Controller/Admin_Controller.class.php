@@ -39,6 +39,7 @@ $this->admin= new Admin();
                 session_start();
                 $_SESSION["admin_login"] = $login;
                 $_SESSION["admin_password"] = $password;
+                $_SESSION["admin_loggedin"] = true;
                 header('location:../Adm/index.php');
             } else {
                 echo "username or password is invalid!";
@@ -50,6 +51,7 @@ $this->admin= new Admin();
     public function admin_disconnect_action($login)
     {
         $this->admin->setadminlogin($login);
+        $_SESSION["admin_loggedin"] = false;
         $result=$this->admin->disconnect();
         if ($result==1) {
             header("location: ../../Login/index.php");
