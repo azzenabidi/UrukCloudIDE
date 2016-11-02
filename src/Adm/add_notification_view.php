@@ -1,4 +1,13 @@
-<?php session_start(); ?>
+<?php
+session_start();
+if($_SESSION['admin_loggedin']==false)
+{
+  header("location: ../Login/index.php");
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
