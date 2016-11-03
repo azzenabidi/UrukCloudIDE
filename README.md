@@ -1,6 +1,8 @@
 # UrukCloudIDE
 UrukCloudIDE is a free as in freedom cloud IDE
 
+![alt tag](https://github.com/azzenovic/UrukCloudIDE/blob/master/src/public/img/UCIDE-logo.png)
+
 # Copyright (c) 2015-2016 azzen abidi <azzen.abidi@gmail.com>
 
 
