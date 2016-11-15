@@ -52,6 +52,117 @@ editor.setOptions({
 
 
       ]);
-    
+      //project management
+      $("#createp").click(function(){
+        $.ajax({
+          url : "triggers/add_user.php",
+          method : "GET",
+          data : {
+            username : $("#username").val(),
+            login : $("#login").val(),
+            pwd : $("#pwd").val()
+          },
+          success : function(data) {
+            $("#div1").html(data).fadeOut(2400);
+          }
+        });
+
+});
+//file management
+$("#createf").click(function(){
+  $.ajax({
+    url : "triggers/add_user.php",
+    method : "GET",
+    data : {
+      username : $("#username").val(),
+      login : $("#login").val(),
+      pwd : $("#pwd").val()
+    },
+    success : function(data) {
+      $("#div1").html(data).fadeOut(2400);
+    }
+  });
+
+});
+//text management
+$("#savef").click(function(){
+  $.ajax({
+    url : "triggers/add_user.php",
+    method : "GET",
+    data : {
+      username : $("#username").val(),
+      login : $("#login").val(),
+      pwd : $("#pwd").val()
+    },
+    success : function(data) {
+      $("#div1").html(data).fadeOut(2400);
+    }
+  });
+
+});
+//Delete Project
+$("#savef").click(function(){
+  $.ajax({
+    url : "triggers/add_user.php",
+    method : "GET",
+    data : {
+      username : $("#username").val(),
+      login : $("#login").val(),
+      pwd : $("#pwd").val()
+    },
+    success : function(data) {
+      $("#div1").html(data).fadeOut(2400);
+    }
+  });
+
+});
+//Delete File
+$("#savef").click(function(){
+  $.ajax({
+    url : "triggers/add_user.php",
+    method : "GET",
+    data : {
+      username : $("#username").val(),
+      login : $("#login").val(),
+      pwd : $("#pwd").val()
+    },
+    success : function(data) {
+      $("#div1").html(data).fadeOut(2400);
+    }
+  });
+
+});
+//Rename Project
+$("#savef").click(function(){
+  $.ajax({
+    url : "triggers/add_user.php",
+    method : "GET",
+    data : {
+      username : $("#username").val(),
+      login : $("#login").val(),
+      pwd : $("#pwd").val()
+    },
+    success : function(data) {
+      $("#div1").html(data).fadeOut(2400);
+    }
+  });
+
+});
+//Rename File
+$("#savef").click(function(){
+  $.ajax({
+    url : "triggers/add_user.php",
+    method : "GET",
+    data : {
+      username : $("#username").val(),
+      login : $("#login").val(),
+      pwd : $("#pwd").val()
+    },
+    success : function(data) {
+      $("#div1").html(data).fadeOut(2400);
+    }
+  });
+
+});
 
 });

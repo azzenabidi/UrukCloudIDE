@@ -61,7 +61,7 @@ display:none;
       </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Create</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="createp">Create</button>
         </div>
       </div>
 
@@ -82,7 +82,7 @@ display:none;
         <input type="text" class="form-control" name="filename">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Create</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="createf">Create</button>
         </div>
       </div>
 
@@ -145,7 +145,7 @@ display:none;
 				<li><a href="#"  data-toggle="modal" data-target="#NewProject">New Project</a></li>
               <li><a href="#"  data-toggle="modal" data-target="#NewFile">New File</a></li>
 
-                <li><a href="#" id="ss">Save</a></li>
+                <li><a href="#" id="savef">Save</a></li>
                 <li><a href="https://localhost:4200/" id="shell" target="blank">Execute</a></li>
 
                 <li class="divider"></li>
