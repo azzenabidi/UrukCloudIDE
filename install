@@ -1,0 +1,39 @@
+#!/bin/bash
+user_name=`whoami`
+
+	echo ""
+	echo "Hello $user_name"
+	echo ""
+	echo "We will install UrukCloudIDE"
+	echo ""
+	echo ""
+	read -p "Do you want to continue ?   [Y]es, [N]o: " answer
+	case $answer in
+		[Yy]* ) ;;
+		[Nn]* ) echo "Sorry, installation aborted GoodBey :-) .";exit 99;;
+		* ) echo "Wrong value: installation aborted."; exit 99;;
+	esac
+	echo ""
+	echo "Be cool and wait......"
+	echo ""
+
+read -p "mysql username:" mysqluser_name
+read -p "mysql password:" mysql_password
+read -p "mysql host:" mysql_host
+read -p "database name:" dbname
+
+mysql -h "$mysql_host" -u "$mysqluser_name" "-p$mysql_password" "$dbname" < "/src/application.sql"
+replace "userdb" "$mysqluser_name" -- "src/Config/dbConn.class.php"
+replace "userpsw" "$mysql_password" -- "src/Config/dbConn.class.php"
+replace "localhost" "$mysql_host" -- "src/Config/dbConn.class.php"
+replace "uruk" "$dbname" -- "src/Config/dbConn.class.php"
+echo
+echo "Installation complete !"
+echo ""
+echo "HaveFUNN and Be FREE !"
+sleep 0.5
+echo "."
+sleep 0.5
+echo "."
+sleep 0.5
+echo "HaveFUNN and Be FREE !"
