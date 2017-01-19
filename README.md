@@ -14,16 +14,16 @@ UrukCloudIDE is a free as in freedom cloud IDE
 - Shellinbox (Optional )
 
 # Installation
-1. Extract the tarball into a location readable by your web server
-2. In the extracted folder type the following commands : 
+- Extract the tarball into a location readable by your web server
+- In the extracted folder type the following commands : 
 
 ```
 chmod +x install.sh && ./install.sh
 ```
 
-3. Follow the installer steps 
-4. Rename or remove the installer script
-5. Congratulation you have successfully setup UrukCloudIDE. Happy coding!
+- Follow the installer steps 
+- Rename or remove the installer script
+- Congratulation you have successfully setup UrukCloudIDE. Happy coding!
 
 # Login
 UrukCloudIDE supports Administrators and regular Users who can use the IDE. To connect as an administrator, use those credinals :
