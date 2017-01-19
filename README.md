@@ -15,11 +15,15 @@ UrukCloudIDE is a free as in freedom cloud IDE
 
 # Installation
 1. Extract the tarball into a location readable by your web server
-2. Point your browser to http://yourhost/Install/install.html to begin the   database installation process
-3. enter the credentials to access the database
-4.  Click install
-5. Remove Install-tmp and head back to the root URL
-6. Congratulation you have successfully setup UrukCloudIDE. Happy coding!
+2. In the extracted folder type the following commands : 
+
+```
+chmod +x install.sh && ./install.sh
+```
+
+3. Follow the installer steps 
+4. Rename or remove the installer script
+5. Congratulation you have successfully setup UrukCloudIDE. Happy coding!
 
 # Login
 UrukCloudIDE supports Administrators and regular Users who can use the IDE. To connect as an administrator, use those credinals :
