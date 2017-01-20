@@ -38,8 +38,8 @@ CREATE TABLE IF NOT EXISTS `admins` (
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`admin_id`, `admin_name`, `admin_login`, `admin_password`) VALUES
-(1, 'Azzen Abidi', 'azzenovic', '098f6bcd4621d373cade4e832627b4f6');
+INSERT INTO `admins` (`admin_name`, `admin_login`, `admin_password`) VALUES
+('Azzen Abidi', 'azzenovic', '098f6bcd4621d373cade4e832627b4f6');
 
 -- --------------------------------------------------------
 
