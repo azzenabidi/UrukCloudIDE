@@ -18,7 +18,7 @@ UrukCloudIDE is a free as in freedom cloud IDE
 - In the extracted folder type the following commands : 
 
 ```
-chmod +x install.sh && ./install.sh
+chmod +x install.sh && ./install
 ```
 
 - Follow the installer steps 
